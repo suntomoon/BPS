@@ -12,7 +12,7 @@
 		<action name="listProductrateplan" class="editProductRatePlanAction" method="listProductrateplans">
 			<result>/view/editProductrateplanList.jsp</result>
 		</action>
-		<action name="addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
+		<action name="view/addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
 			<result type="redirect">/listProductrateplan</result>
 		</action>
 		<action name="deleteProductrateplan/*" class="editProductRatePlanAction" method="deleteProductrateplan">
