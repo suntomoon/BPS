@@ -65,6 +65,54 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <!-- Product -->
+    <bean name="editProductAction" class="com.bps.controller.EditProductAction" scope="prototype">
+	     <property name="productManager">
+	        <ref bean="productManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="productManager" class="com.bps.service.ProductManagerImpl">
+        <property name="productDAO" ref="productDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="productDAO" class="com.bps.dao.ProductDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- ProductRatePlan -->
+    <bean name="editProductRatePlanAction" class="com.bps.controller.EditProductRatePlanAction" scope="prototype">
+	     <property name="productrateplanManager">
+	        <ref bean="productrateplanManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
+        <property name="productrateplanDAO" ref="productrateplanDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="productrateplanDAO" class="com.bps.dao.ProductRatePlanDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- ProductItem -->
+    <bean name="editProductItemAction" class="com.bps.controller.EditProductItemAction" scope="prototype">
+	     <property name="productitemManager">
+	        <ref bean="productitemManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="productitemManager" class="com.bps.service.ProductItemManagerImpl">
+        <property name="productitemDAO" ref="productitemDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="productitemDAO" class="com.bps.dao.ProductItemDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <!-- Configure jdbc.properties -->
     <bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
