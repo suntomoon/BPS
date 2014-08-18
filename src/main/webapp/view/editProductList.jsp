@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Spring-4 + Struts-3 + Hibernate Integration Demo</h2>
+<h2>Products List Editor</h2>
  
 <s:form method="post" action="addProduct">
     <table>

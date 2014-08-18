@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Spring-4 + Struts-3 + Hibernate Integration Demo</h2>
+<h2>Orders List Editor</h2>
  
 <s:form method="post" action="addOrder">
     <table>

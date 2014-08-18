@@ -8,5 +8,8 @@
         <mapping class="com.bps.entity.EmployeeEntity" />
         <mapping class="com.bps.entity.OrderEntity" />
         <mapping class="com.bps.entity.CustomerEntity" />
+        <mapping class="com.bps.entity.ProductEntity" />
+        <mapping class="com.bps.entity.ProductRatePlanEntity" />
+        <mapping class="com.bps.entity.ProductItemEntity" />
     </session-factory>
 </hibernate-configuration>
