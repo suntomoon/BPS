@@ -113,6 +113,22 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <!-- Invoice -->
+    <bean name="editInvoiceAction" class="com.bps.controller.EditInvoiceAction" scope="prototype">
+	     <property name="invoiceManager">
+	        <ref bean="invoiceManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="invoiceManager" class="com.bps.service.InvoiceManagerImpl">
+        <property name="invoiceDAO" ref="invoiceDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="invoiceDAO" class="com.bps.dao.InvoiceDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <!-- Configure jdbc.properties -->
     <bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"

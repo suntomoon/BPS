@@ -11,5 +11,6 @@
         <mapping class="com.bps.entity.ProductEntity" />
         <mapping class="com.bps.entity.ProductRatePlanEntity" />
         <mapping class="com.bps.entity.ProductItemEntity" />
+        <mapping class="com.bps.entity.InvoiceEntity" />
     </session-factory>
 </hibernate-configuration>

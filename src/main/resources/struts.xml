@@ -41,5 +41,6 @@
 	<include file="struts-product.xml"/>
 	<include file="struts-productrateplan.xml"/>
 	<include file="struts-productitem.xml"/>
+	<include file="struts-invoice.xml"/>
 	
 </struts>
