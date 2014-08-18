@@ -12,7 +12,7 @@
 		<action name="listCustomer" class="editCustomerAction" method="listCustomers">
 			<result>/view/editCustomerList.jsp</result>
 		</action>
-		<action name="addCustomer" class="editCustomerAction" method="addCustomer">
+		<action name="view/addCustomer" class="editCustomerAction" method="addCustomer">
 			<result type="redirect">/listCustomer</result>
 		</action>
 		<action name="deleteCustomer/*" class="editCustomerAction" method="deleteCustomer">

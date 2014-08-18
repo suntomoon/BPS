@@ -27,16 +27,13 @@
 		<action name="list" class="editEmployeeAction" method="listEmployees">
 			<result>/view/editEmployeeList.jsp</result>
 		</action>
-		<action name="add" class="editEmployeeAction" method="addEmployee">
+		<action name="view/add" class="editEmployeeAction" method="addEmployee">
 			<result type="redirect">/list</result>
 		</action>
 		<action name="delete/*" class="editEmployeeAction" method="deleteEmployee">
 		    <param name="employee.id">{1}</param>
 			<result type="redirect">/list</result>
 		</action>
-		<action name="*" class="editEmployeeAction" method="listEmployees">
-		  <result>/view/editEmployeeList.jsp</result>
-		</action> 
 	</package>
 	
 	<include file="struts-customer.xml"/>
