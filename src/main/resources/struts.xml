@@ -38,4 +38,8 @@
 	
 	<include file="struts-customer.xml"/>
 	<include file="struts-order.xml"/>
+	<include file="struts-product.xml"/>
+	<include file="struts-productrateplan.xml"/>
+	<include file="struts-productitem.xml"/>
+	
 </struts>

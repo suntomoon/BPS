@@ -18,7 +18,11 @@
 </head>
 <body>
  
+<<<<<<< HEAD
 <h2>Order</h2>
+=======
+<h2>Orders List Editor</h2>
+>>>>>>> 1e2452d73386434a7c1fa101457087063bb70e19
  
 <s:form method="post" action="addOrder">
     <table>
