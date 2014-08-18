@@ -19,8 +19,11 @@ public class OrderEntity extends AbstractEntity {
     @Column(name="CUSTOMERID")
     private String customerid;
    
-    @Column(name="ORDERDATE")
-    private String orderdate;
+    @Column(name="ORDERSTARTDATE")
+    private String orderstartdate;
+    
+    @Column(name="ORDERENDDATE")
+    private String orderenddate;
     
     public String getCustomerid() {
         return customerid;
@@ -30,12 +33,20 @@ public class OrderEntity extends AbstractEntity {
         this.customerid = customerid;
     }
     
-    public String getOrderdate() {
-        return orderdate;
+    public String getOrderstartdate() {
+        return orderstartdate;
     }
    
-    public void setOrderdate(String orderdate) {
-        this.orderdate = orderdate;
+    public void setOrderstartdate(String orderstartdate) {
+        this.orderstartdate = orderstartdate;
+    }
+    
+    public String getOrderenddate() {
+        return orderstartdate;
+    }
+   
+    public void setOrderenddate(String orderenddate) {
+        this.orderenddate = orderenddate;
     }
    
     public Integer getId() {

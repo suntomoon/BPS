@@ -9,33 +9,58 @@ import javax.persistence.Table;
 import com.bps.abstarct.AbstractEntity;
 
 @Entity
-@Table(name="ORDERPLAN")
+@Table(name="ORDERITEM")
 public class OrderItemEntity extends AbstractEntity {
 	@Id
     @Column(name="ID")
     @GeneratedValue
     private Integer id;
      
-    @Column(name="ORDERID")
-    private String orderid;
-   
-    @Column(name="ORDERPLANName")
-    private String orderplanname;
+    @Column(name="ORDERPLANID")
+    private String orderplanid;
     
-    public String getOrderid() {
-        return orderid;
+    @Column(name="ORDERITEMNAME")
+    private String orderitemname;
+   
+    @Column(name="CHARGETYPE")
+    private String chargetype;
+    
+    @Column(name="CHARGETYPE")
+    private String chargemode;
+    
+    @Column(name="AMOUNT")
+    private String amount;
+    
+    public String getOrderplanid() {
+        return orderplanid;
     }
    
-    public void setOrderid(String orderid) {
-        this.orderid = orderid;
+    public void setOrderplanid(String orderplanid) {
+        this.orderplanid = orderplanid;
     }
     
-    public String getOrderplanname() {
-        return orderplanname;
+    public String getOrderitemname() {
+        return orderitemname;
     }
    
-    public void setOrderplanname(String orderplanname) {
-        this.orderplanname = orderplanname;
+    public void setOrderitemname(String orderitemname) {
+        this.orderitemname = orderitemname;
+    }
+    
+    public String getChargemode() {
+        return chargemode;
+    }
+   
+    public void setChargemode(String chargemode) {
+        this.chargemode = chargemode;
+    }
+    
+    public String getChargetype() {
+        return chargetype;
+    }
+   
+    public void setChargetype(String chargetype) {
+        this.chargetype = chargetype;
     }
    
     public Integer getId() {
