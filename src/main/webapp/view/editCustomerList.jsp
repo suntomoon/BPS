@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Customer</h2>
+<h2>Customer Editor</h2>
  
 <s:form method="post" action="addCustomer">
     <table>

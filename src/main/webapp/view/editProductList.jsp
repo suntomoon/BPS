@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Spring-4 + Struts-3 + Hibernate Integration Demo</title>
+    <title>BPS</title>
     <style>
 	table.list
 	{
@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Products List Editor</h2>
+<h2>Product Editor</h2>
  
 <s:form method="post" action="addProduct">
     <table>

@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>BPS Demo</title>
+    <title>BPS</title>
     <style>
 	table.list
 	{
@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Product Items List Editor</h2>
+<h2>Product Item Editor</h2>
  
 <s:form method="post" action="addProductitem">
     <table>

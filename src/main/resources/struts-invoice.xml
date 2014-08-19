@@ -9,7 +9,7 @@
 	    	 1) class is set to 'editEmployeeAction' which is bean defined by Spring context
 	    	 2) We have given the method to be called here as well;
 	   	-->
-		<action name="view/listInvoice" class="editInvoiceAction" method="listInvoices">
+		<action name="listInvoice" class="editInvoiceAction" method="listInvoices">
 			<result>/view/editInvoiceList.jsp</result>
 		</action>
 	</package>

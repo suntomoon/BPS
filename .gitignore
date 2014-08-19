@@ -54,3 +54,5 @@ target/classes/struts-productrateplan.xml
 target/classes/struts-product.xml
 target/classes/struts-productitem.xml
 target/classes/struts-productrateplan.xml
+/target
+/.classpath

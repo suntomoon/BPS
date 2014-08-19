@@ -12,12 +12,12 @@
 		<action name="listProductrateplan" class="editProductRatePlanAction" method="listProductrateplans">
 			<result>/view/editProductRatePlanList.jsp</result>
 		</action>
-		<action name="view/addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
-			<result type="redirect">/listProductrateplan</result>
+		<action name="addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
+			<result type="redirect">listProductrateplan</result>
 		</action>
 		<action name="deleteProductrateplan/*" class="editProductRatePlanAction" method="deleteProductrateplan">
 		    <param name="productrateplan.id">{1}</param>
-			<result type="redirect">/listProductrateplan</result>
+			<result type="redirect">listProductrateplan</result>
 		</action>
 	</package>
 </struts>

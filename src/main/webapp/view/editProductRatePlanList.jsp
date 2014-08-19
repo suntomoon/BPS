@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Spring-4 + Struts-3 + Hibernate Integration Demo</title>
+    <title>BPS</title>
     <style>
 	table.list
 	{
@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>Product Rate Plans List Editor</h2>
+<h2>Product RatePlan Editor</h2>
  
 <s:form method="post" action="addProductrateplan">
     <table>
@@ -47,7 +47,7 @@
 		    <th align="left">Product</th>
 		    <th align="left">Rate Plan</th>
 		    <th align="left">Description</th>
-		    <th align="left">Operation</th>
+		    <th align="left">Action</th>
 		</tr>
 		<c:forEach items="${productrateplans}" var="prrp">
 		    <tr>
