@@ -43,7 +43,7 @@
 </s:form>
  
      
-<h3>Product Items Available</h3>
+<h3>Product Items</h3>
 <c:if  test="${!empty productitems}">
 	<table class="list">
 		<tr>

@@ -40,7 +40,7 @@
 </s:form>
  
      
-<h3>Product Rate Plans Available</h3>
+<h3>Product RatePlans</h3>
 <c:if  test="${!empty productrateplans}">
 	<table class="list">
 		<tr>

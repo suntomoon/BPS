@@ -12,8 +12,8 @@ public class CustomerManagerImpl implements AbstractManager {
 	 protected AbstractDAO dao;
 	 
 	 @Transactional
-	 public void addEntity(AbstractEntity entirty) {
-		 dao.addEntity(entirty);
+	 public void addEntity(AbstractEntity entity) {
+		 dao.addEntity(entity);
 	 }
 	 
 	 @Transactional
