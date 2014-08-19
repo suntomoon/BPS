@@ -16,6 +16,9 @@
 		<a href="listOrder"  target="content">Order</a>
 		<br/>
 		<br/>
+		<a href="listBillrun"  target="content">InvoiceBillRun</a>
+		<br/>
+		<br/>
 		<a href="listInvoice"  target="content">Invoice</a>
 		<br/>
 		<br/>

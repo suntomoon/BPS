@@ -11,3 +11,5 @@ create table PRODUCTRATEPLAN (ID int unsigned not null auto_increment, PRODUCTID
 create table PRODUCTITEM (ID int unsigned not null auto_increment, PLANID int, ITEMNAME varchar(20), CHARGEMODEL varchar(20),  CHARGETYPE varchar(20), PRODUCTITEMDESCRIPTION varchar(100),primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;
 
 create table INVOICE (ID int unsigned not null auto_increment, INVOICEID varchar(20), INVOICEDATE varchar(20), AMOUNT varchar(20) ,primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;
+
+create table BILLRUN (ID int unsigned not null auto_increment, CUSTOMERID varchar(20), BILLRUNENDDATE varchar(20),primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;

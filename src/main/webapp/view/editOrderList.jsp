@@ -18,7 +18,7 @@
 </head>
 <body>
  
-<h2>BPS-Order</h2>
+<h2>Order Editor</h2>
  
 <s:form method="post" action="addOrder">
     <table>
@@ -40,7 +40,7 @@
 </s:form>
  
      
-<h3>Orders Editor</h3>
+<h3>Orders</h3>
 <c:if  test="${!empty orders}">
 	<table class="list">
 		<tr>

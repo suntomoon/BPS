@@ -129,6 +129,22 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+     <!-- BillRun -->
+    <bean name="editBillRunAction" class="com.bps.controller.EditBillRunAction" scope="prototype">
+	     <property name="billrunManager">
+	        <ref bean="billrunManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="billrunManager" class="com.bps.service.BillRunManagerImpl">
+        <property name="billrunDAO" ref="billrunDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="billrunDAO" class="com.bps.dao.BillRunDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <!-- Configure jdbc.properties -->
     <bean id="propertyConfigurer"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"

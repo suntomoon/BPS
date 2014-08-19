@@ -12,12 +12,12 @@
 		<action name="listOrder" class="editOrderAction" method="listOrders">
 			<result>/view/editOrderList.jsp</result>
 		</action>
-		<action name="view/addOrder" class="editOrderAction" method="addOrder">
-			<result type="redirect">/listOrder</result>
+		<action name="addOrder" class="editOrderAction" method="addOrder">
+			<result type="redirect">listOrder</result>
 		</action>
 		<action name="deleteOrder/*" class="editOrderAction" method="deleteOrder">
 		    <param name="order.id">{1}</param>
-			<result type="redirect">/listOrder</result>
+			<result type="redirect">listOrder</result>
 		</action>
 	</package>
 </struts>

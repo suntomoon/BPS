@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import com.bps.abstarct.AbstractEntity;
 
 @Entity
-@Table(name="ORDERTABLE")
-public class OrderEntity extends AbstractEntity {
+@Table(name="BillRun")
+public class BillRunEntity extends AbstractEntity {
 	@Id
     @Column(name="ID")
     @GeneratedValue
@@ -19,11 +19,8 @@ public class OrderEntity extends AbstractEntity {
     @Column(name="CUSTOMERID")
     private String customerid;
    
-    @Column(name="ORDERSTARTDATE")
-    private String orderstartdate;
-    
-    @Column(name="ORDERENDDATE")
-    private String orderenddate;
+    @Column(name="BILLRUNENDDATE")
+    private String billrunenddate;
     
     public String getCustomerid() {
         return customerid;
@@ -33,22 +30,14 @@ public class OrderEntity extends AbstractEntity {
         this.customerid = customerid;
     }
     
-    public String getOrderstartdate() {
-        return orderstartdate;
+    public String getBillrunenddate() {
+        return billrunenddate;
     }
    
-    public void setOrderstartdate(String orderstartdate) {
-        this.orderstartdate = orderstartdate;
+    public void setBillrunenddate(String billrunenddate) {
+        this.billrunenddate = billrunenddate;
     }
     
-    public String getOrderenddate() {
-        return orderenddate;
-    }
-   
-    public void setOrderenddate(String orderenddate) {
-        this.orderenddate = orderenddate;
-    }
-   
     public Integer getId() {
         return id;
     }
