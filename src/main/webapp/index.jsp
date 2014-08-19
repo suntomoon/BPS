@@ -56,8 +56,8 @@ body {
 	</div>
 
 	<div id="content">
-		<iframe name="content" src="view/content.jsp"
-			width="100%" height="100%"> </iframe>
+		<iframe name="content" src="view/content.jsp" width="100%"
+			height="100%"> </iframe>
 	</div>
 </body>
 </html>

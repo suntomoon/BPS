@@ -9,8 +9,8 @@
 	    	 1) class is set to 'editEmployeeAction' which is bean defined by Spring context
 	    	 2) We have given the method to be called here as well;
 	   	-->
-		<action name="listProductrateplan" class="editProductRatePlanAction" method="listProductrateplans">
-			<result>/view/editProductrateplanList.jsp</result>
+		<action name="editProductRatePlanAction" class="editProductRatePlanAction" method="listProductrateplans">
+			<result>/view/editProductRatePlanList.jsp</result>
 		</action>
 		<action name="view/addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
 			<result type="redirect">/listProductrateplan</result>
