@@ -22,11 +22,16 @@ public class OrderPlanManagerImpl implements AbstractManager {
 	 }
 	 
 	 @Transactional
+	 public List<AbstractEntity> getAllEntity(int entityId) {
+		 return dao.getAllEntity();
+	 }
+	 
+	 @Transactional
 	 public void deleteEntity(Integer entityId) {
 		 dao.deleteEntity(entityId);
 	 }
 	 
-	 public void setOrderPlanDAO(AbstractDAO dao) {
+	 public void setOrderplanDAO(AbstractDAO dao) {
 			this.dao = dao;
 	 }
 }

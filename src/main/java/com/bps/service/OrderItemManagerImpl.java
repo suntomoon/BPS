@@ -26,7 +26,7 @@ public class OrderItemManagerImpl implements AbstractManager {
 		 dao.deleteEntity(entityId);
 	 }
 	 
-	 public void setOrderItemDAO(AbstractDAO dao) {
+	 public void setOrderitemDAO(AbstractDAO dao) {
 			this.dao = dao;
 	 }
 }

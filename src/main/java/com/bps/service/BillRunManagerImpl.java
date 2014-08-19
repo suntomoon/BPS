@@ -7,13 +7,17 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bps.abstarct.AbstractDAO;
 import com.bps.abstarct.AbstractEntity;
 import com.bps.abstarct.AbstractManager;
+import com.bps.engine.BillRunEngine;
+import com.bps.entity.BillRunEntity;
 
 public class BillRunManagerImpl implements AbstractManager {
 	 protected AbstractDAO dao;
 	 
-	 @Transactional
+	 @SuppressWarnings("static-access")
+	@Transactional
 	 public void addEntity(AbstractEntity entity) {
 		 dao.addEntity(entity);
+		 BillRunEngine.getInstance().Run((BillRunEntity)entity);
 	 }
 	 
 	 @Transactional

@@ -25,7 +25,7 @@ public class OrderItemEntity extends AbstractEntity {
     @Column(name="CHARGETYPE")
     private String chargetype;
     
-    @Column(name="CHARGETYPE")
+    @Column(name="CHARGEMODE")
     private String chargemode;
     
     @Column(name="AMOUNT")
@@ -61,6 +61,13 @@ public class OrderItemEntity extends AbstractEntity {
    
     public void setChargetype(String chargetype) {
         this.chargetype = chargetype;
+    }
+    
+    public String getAmount() {
+        return amount;
+    }
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
    
     public Integer getId() {

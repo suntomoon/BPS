@@ -4,35 +4,33 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 
-import com.bps.abstarct.AbstractDAO;
 import com.bps.abstarct.AbstractEntity;
 import com.bps.entity.OrderPlanEntity;
 
-public class OrderPlanDAOImpl implements AbstractDAO {
-	protected SessionFactory sessionFactory;
-	
-	@Override
-	public void addEntity(AbstractEntity entity) {
-		this.sessionFactory.getCurrentSession().save((OrderPlanEntity)entity);
-	}
-
+public class OrderPlanDAOImpl extends RWDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<AbstractEntity> getAllEntity() {
 		return this.sessionFactory.getCurrentSession().createQuery("from OrderPlanEntity").list();
 	}
-
+	
 	@Override
-	public void deleteEntity(Integer entityId) {
+	public void deleteEntity(int entityId) {
 		OrderPlanEntity entity = (OrderPlanEntity) sessionFactory.getCurrentSession()
 				.load(OrderPlanEntity.class, entityId);
 		if (null != entity) {
 			this.sessionFactory.getCurrentSession().delete(entity);
 		}
 	}
-	
-	 public void setSessionFactory(SessionFactory sessionFactory) {
-		 this.sessionFactory = sessionFactory;
-	 }
 
+	@Override
+	public OrderPlanEntity getEntityById(int entityId) {
+		OrderPlanEntity entity = (OrderPlanEntity) sessionFactory.getCurrentSession()
+				.load(OrderPlanEntity.class, entityId);
+		return entity;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		 this.sessionFactory = sessionFactory;
+	}
 }

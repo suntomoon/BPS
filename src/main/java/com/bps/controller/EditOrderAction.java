@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import com.bps.abstarct.AbstractEntity;
 import com.bps.abstarct.AbstractManager;
 import com.bps.entity.OrderEntity;
+import com.bps.entity.OrderPlanEntity;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -18,16 +19,22 @@ public class EditOrderAction extends ActionSupport implements Preparable
 	private static final Logger logger = Logger.getLogger(EditOrderAction.class);
 	//List of orders; Setter and Getter are below
 	private List<AbstractEntity> orders;
+	private List<AbstractEntity> orderplans;
+	private List<AbstractEntity> orderitems;
 	//Order object to be added; Setter and Getter are below
 	private OrderEntity order;
 	
 	//Order manager injected by spring context; This is cool !!
 	private AbstractManager orderManager;
+	private AbstractManager orderplanManager;
+	private AbstractManager orderitemManager;
 
 	//This method return list of orders in database
 	public String listOrders() {
 		logger.info("listOrders method called");
 		orders = orderManager.getAllEntity();
+		orderplans = orderplanManager.getAllEntity();
+		orderitems = orderitemManager.getAllEntity();
 		return SUCCESS;
 	}
 
@@ -52,6 +59,7 @@ public class EditOrderAction extends ActionSupport implements Preparable
 		order = null;
 	}
 
+	// order
 	public void setOrderManager(AbstractManager orderManager) {
 		this.orderManager = orderManager;
 	}
@@ -71,4 +79,31 @@ public class EditOrderAction extends ActionSupport implements Preparable
 	public void setOrder(OrderEntity order) {
 		this.order = order;
 	}
+	
+	// order plan
+	public void setOrderplanManager(AbstractManager orderplanManager) {
+		this.orderplanManager = orderplanManager;
+	}
+
+	public List<AbstractEntity> getOrderplans() {
+		return orderplans;
+	}
+
+	public void setOrderplans(List<AbstractEntity> orderplans) {
+		this.orderplans = orderplans;
+	}
+
+	// order item
+	public void setOrderitemManager(AbstractManager orderitemManager) {
+		this.orderitemManager = orderitemManager;
+	}
+
+	public List<AbstractEntity> getOrderitems() {
+		return orderitems;
+	}
+
+	public void setOrderitems(List<AbstractEntity> orderitems) {
+		this.orderitems = orderitems;
+	}
+		
 }

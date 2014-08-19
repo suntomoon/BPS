@@ -54,6 +54,12 @@
 	     <property name="orderManager">
 	        <ref bean="orderManager"/>
 	     </property>
+	      <property name="orderplanManager">
+	        <ref bean="orderplanManager"/>
+	     </property>
+	     <property name="orderitemManager">
+	        <ref bean="orderitemManager"/>
+	     </property>
     </bean>
     
     <bean id="orderManager" class="com.bps.service.OrderManagerImpl">
@@ -62,6 +68,24 @@
     
      <!-- These beans are injected automatically by spring context -->
     <bean id="orderDAO" class="com.bps.dao.OrderDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="orderplanManager" class="com.bps.service.OrderPlanManagerImpl">
+        <property name="orderplanDAO" ref="orderplanDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="orderplanDAO" class="com.bps.dao.OrderPlanDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="orderitemManager" class="com.bps.service.OrderItemManagerImpl">
+        <property name="orderitemDAO" ref="orderitemDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="orderitemDAO" class="com.bps.dao.OrderItemDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
