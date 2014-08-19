@@ -10,14 +10,14 @@
 	    	 2) We have given the method to be called here as well;
 	   	-->
 		<action name="listProductrateplan" class="editProductRatePlanAction" method="listProductrateplans">
-			<result>/view/editProductrateplanList.jsp</result>
+			<result>/view/editProductRatePlanList.jsp</result>
 		</action>
 		<action name="addProductrateplan" class="editProductRatePlanAction" method="addProductrateplan">
-			<result type="redirect">/listProductrateplan</result>
+			<result type="redirect">listProductrateplan</result>
 		</action>
 		<action name="deleteProductrateplan/*" class="editProductRatePlanAction" method="deleteProductrateplan">
 		    <param name="productrateplan.id">{1}</param>
-			<result type="redirect">/listProductrateplan</result>
+			<result type="redirect">listProductrateplan</result>
 		</action>
 	</package>
 </struts>

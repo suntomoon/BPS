@@ -13,11 +13,11 @@
 			<result>/view/editProductItemList.jsp</result>
 		</action>
 		<action name="addProductitem" class="editProductItemAction" method="addProductitem">
-			<result type="redirect">/listProductitem</result>
+			<result type="redirect">listProductitem</result>
 		</action>
 		<action name="deleteProductitem/*" class="editProductItemAction" method="deleteProductitem">
 		    <param name="productitem.id">{1}</param>
-			<result type="redirect">/listProductitem</result>
+			<result type="redirect">listProductitem</result>
 		</action>
 	</package>
 </struts>

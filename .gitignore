@@ -35,24 +35,7 @@ Icon
 .Spotlight-V100
 .Trashes
 
-target/classes/beans.xml
+target/*
 *.class
-target/classes/hibernate.cfg.xml
-target/classes/log4j.properties
-target/classes/messages.properties
-target/classes/struts-customer.xml
-target/classes/struts-invoice.xml
-target/classes/struts-order.xml
-target/classes/struts-product.xml
-target/classes/struts-product.xml
-target/classes/struts-product.xml
-target/classes/struts-product.xml
-target/classes/struts-productitem.xml
-target/classes/struts-productrateplan.xml
-target/classes/struts.xml
-target/classes/struts-productrateplan.xml
-target/classes/struts-product.xml
-target/classes/struts-productitem.xml
-target/classes/struts-productrateplan.xml
 /target
 /.classpath
