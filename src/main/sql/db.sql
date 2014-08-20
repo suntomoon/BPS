@@ -46,11 +46,43 @@ create table ORDERITEM (
 	CONSTRAINT `ORDERITEM_FK_1` FOREIGN KEY (`ORDERPLANID`) REFERENCES `ORDERPLAN` (`ID`) on delete cascade on update cascade
 ) engine=innodb default charset=utf8 auto_increment=1;
 
-create table PRODUCT (ID int unsigned not null auto_increment, NAME varchar(20), DESCRIPTION varchar(100), primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;
+create table PRODUCT( 
+ID int unsigned not null auto_increment, 
+NAME varchar(20), 
+DESCRIPTION varchar(100), 
+primary key(ID)
+) engine=innodb default charset=utf8 auto_increment=1;
 
-create table PRODUCTRATEPLAN (ID int unsigned not null auto_increment, PRODUCTID int, PRODUCTNAME varchar(20), PLANNAME varchar(20), PLANDESCRIPTION varchar(100),primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;
+create table PRODUCTRATEPLAN (
+ID int unsigned not null auto_increment, 
+PRODUCTID int unsigned , 
+PRODUCTNAME varchar(20), 
+PLANNAME varchar(20), 
+PLANDESCRIPTION varchar(100), 
+primary key(ID), 
+key productid(PRODUCTID), 
+constraint fk_productrateplan 
+foreign key (productid) 
+references PRODUCT (ID) 
+ON DELETE RESTRICT 
+ON UPDATE CASCADE 
+) engine=innodb default charset=utf8 auto_increment=1;
 
-create table PRODUCTITEM (ID int unsigned not null auto_increment, PLANID int, ITEMNAME varchar(20), CHARGEMODEL varchar(20),  CHARGETYPE varchar(20), PRODUCTITEMDESCRIPTION varchar(100),primary key(ID)) engine=innodb default charset=utf8 auto_increment=1;
+create table PRODUCTITEM (
+ID int unsigned not null auto_increment, 
+PLANID int unsigned , 
+ITEMNAME varchar(20), 
+CHARGEMODEL varchar(20), 
+CHARGETYPE varchar(20), 
+PRODUCTITEMDESCRIPTION varchar(100), 
+primary key(ID), 
+key planid(PLANID), 
+constraint fk_productitem 
+foreign key (planid) 
+references PRODUCTRATEPLAN (ID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE 
+) engine=innodb default charset=utf8 auto_increment=1;
 
 create table INVOICE (
 	ID int unsigned not null auto_increment, 
