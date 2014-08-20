@@ -116,7 +116,7 @@ public class BillRunEngine {
 			
 			invoice.setInvoicedate(Utils.getString(new Date()));
 			invoice.setAmount(totalAmount.toString());
-			invoice.setInvoiceid("inv-0001");
+			invoice.setInvoiceid("inv-000" + invId);
 			invoiceDAO.addEntity(invoice);
 		}
 		

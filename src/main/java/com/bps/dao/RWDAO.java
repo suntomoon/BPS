@@ -41,4 +41,10 @@ public class RWDAO implements AbstractDAO {
 	public List<AbstractEntity> getAllEntity() {
 		return this.sessionFactory.getCurrentSession().createQuery("from AbstractEntity").list();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AbstractEntity> getAllEntity(String entityId) {
+		return this.sessionFactory.getCurrentSession().createQuery("from AbstractEntity").list();
+	}
 }

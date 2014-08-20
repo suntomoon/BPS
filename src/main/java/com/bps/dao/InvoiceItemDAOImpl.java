@@ -14,6 +14,12 @@ public class InvoiceItemDAOImpl extends RWDAO {
 		return this.sessionFactory.getCurrentSession().createQuery("from InvoiceItemEntity").list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AbstractEntity> getAllEntity(String invoiceId) {
+		return this.sessionFactory.getCurrentSession().createQuery("from InvoiceItemEntity where INVOICEID=" + invoiceId).list();
+	}
+	
 	@Override
 	public void deleteEntity(int entityId) {
 		InvoiceItemEntity entity = (InvoiceItemEntity) sessionFactory.getCurrentSession()

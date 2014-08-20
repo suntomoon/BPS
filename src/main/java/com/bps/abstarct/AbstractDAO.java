@@ -8,4 +8,5 @@ public interface AbstractDAO {
 	 public void updateEntity(AbstractEntity entity);
 	 public AbstractEntity getEntityById(int entityId);
 	 public List<AbstractEntity> getAllEntity();
+	 public List<AbstractEntity> getAllEntity(String entityId);
 }

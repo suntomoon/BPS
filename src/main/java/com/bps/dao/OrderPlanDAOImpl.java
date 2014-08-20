@@ -15,6 +15,7 @@ public class OrderPlanDAOImpl extends RWDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<AbstractEntity> getAllEntity(String orderId) {
 		return this.sessionFactory.getCurrentSession().createQuery("from OrderPlanEntity where ORDERID=" + orderId).list();
 	}

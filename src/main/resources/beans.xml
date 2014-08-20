@@ -114,20 +114,10 @@
     <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
         <property name="productrateplanDAO" ref="productrateplanDAO"/>
     </bean>
-     <!-- These beans are injected automatically by spring context -->
-    <bean id="productrateplanDAO" class="com.bps.dao.ProductRatePlanDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
     
-    <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
-        <property name="productrateplanDAO" ref="productrateplanDAO"/>
-    </bean>
-     <!-- These beans are injected automatically by spring context -->
+    <!-- These beans are injected automatically by spring context -->
     <bean id="productrateplanDAO" class="com.bps.dao.ProductRatePlanDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
-        <property name="productrateplanDAO" ref="productrateplanDAO"/>
     </bean>
     
     <!-- ProductItem -->
@@ -162,6 +152,18 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <!-- InvoiceItem -->
+    <bean name="editInvoiceItemAction" class="com.bps.controller.EditInvoiceItemAction" scope="prototype">
+	     <property name="invoiceitemManager">
+	        <ref bean="invoiceitemManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="invoiceitemManager" class="com.bps.service.InvoiceItemManagerImpl">
+        <property name="invoiceitemDAO" ref="invoiceitemDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context --> 
      <bean id="invoiceitemDAO" class="com.bps.dao.InvoiceItemDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

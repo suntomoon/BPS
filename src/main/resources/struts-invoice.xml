@@ -12,5 +12,9 @@
 		<action name="listInvoice" class="editInvoiceAction" method="listInvoices">
 			<result>/view/editInvoiceList.jsp</result>
 		</action>
+		<action name="listInvoiceitem/*" class="editInvoiceItemAction" method="listInvoiceitems">
+		    <param name="invoiceId">{1}</param>
+			<result>/view/editInvoiceList.jsp</result>
+		</action>
 	</package>
 </struts>
