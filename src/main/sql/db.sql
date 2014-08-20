@@ -60,6 +60,15 @@ create table INVOICE (
 	primary key(ID)
 ) engine=innodb default charset=utf8 auto_increment=1;
 
+create table INVOICEITEM (
+	ID int unsigned not null auto_increment, 
+	INVOICEID int unsigned, 
+	INVOICEITEMNAME varchar(20), 
+	AMOUNT varchar(20),
+	primary key(ID),
+	CONSTRAINT `INVITEM_FK_1` FOREIGN KEY (`INVOICEID`) REFERENCES `INVOICE` (`ID`) on delete cascade on update cascade
+) engine=innodb default charset=utf8 auto_increment=1;
+
 create table BILLRUN (
 	ID int unsigned not null auto_increment, 
 	CUSTOMERID varchar(20), 

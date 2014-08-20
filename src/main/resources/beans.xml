@@ -153,7 +153,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-     <!-- BillRun -->
+     <bean id="invoiceitemDAO" class="com.bps.dao.InvoiceItemDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- BillRun -->
     <bean name="editBillRunAction" class="com.bps.controller.EditBillRunAction" scope="prototype">
 	     <property name="billrunManager">
 	        <ref bean="billrunManager"/>
@@ -162,11 +166,21 @@
     
     <bean id="billrunManager" class="com.bps.service.BillRunManagerImpl">
         <property name="billrunDAO" ref="billrunDAO"/>
+        <property name="billrunEngine" ref="billrunEngine"/>
     </bean>
     
      <!-- These beans are injected automatically by spring context -->
     <bean id="billrunDAO" class="com.bps.dao.BillRunDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+     <!-- BillRunEngine -->
+    <bean id="billrunEngine" class="com.bps.engine.BillRunEngine">
+	    <property name="orderDAO" ref="orderDAO"/>
+	    <property name="orderplanDAO" ref="orderplanDAO"/>
+	    <property name="orderitemDAO" ref="orderitemDAO"/>
+	    <property name="invoiceDAO" ref="invoiceDAO"/>
+	    <property name="invoiceitemDAO" ref="invoiceitemDAO"/>
     </bean>
     
     <!-- Configure jdbc.properties -->

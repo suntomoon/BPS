@@ -1,6 +1,7 @@
 package com.bps.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
@@ -26,5 +27,9 @@ public class Utils {
 		}
 		
 		return dateStr;
+	}
+	
+	public static int getDays(Date date1, Date date2) {
+		return (int)((date1.getTime() - date2.getTime())/ 1000 / 60 / 60 / 24);
 	}
 }

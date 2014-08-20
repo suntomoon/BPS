@@ -11,13 +11,13 @@ import com.bps.engine.BillRunEngine;
 import com.bps.entity.BillRunEntity;
 
 public class BillRunManagerImpl implements AbstractManager {
-	 protected AbstractDAO dao;
+	protected AbstractDAO dao;
+	private BillRunEngine engine;
 	 
-	 @SuppressWarnings("static-access")
 	@Transactional
 	 public void addEntity(AbstractEntity entity) {
 		 dao.addEntity(entity);
-		 BillRunEngine.getInstance().Run((BillRunEntity)entity);
+		 engine.Run((BillRunEntity)entity);
 	 }
 	 
 	 @Transactional
@@ -32,5 +32,9 @@ public class BillRunManagerImpl implements AbstractManager {
 	 
 	 public void setBillrunDAO(AbstractDAO dao) {
 			this.dao = dao;
+	 }
+	 
+	 public void setBillrunEngine(BillRunEngine engine) {
+			this.engine = engine;
 	 }
 }
