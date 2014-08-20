@@ -6,8 +6,9 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bps.abstarct.AbstractDAO;
 import com.bps.abstarct.AbstractEntity;
+import com.bps.dao.InvoiceDAOImpl;
+import com.bps.dao.InvoiceItemDAOImpl;
 import com.bps.dao.OrderDAOImpl;
 import com.bps.dao.OrderItemDAOImpl;
 import com.bps.dao.OrderPlanDAOImpl;
@@ -17,23 +18,24 @@ import com.bps.entity.InvoiceItemEntity;
 import com.bps.entity.OrderEntity;
 import com.bps.entity.OrderItemEntity;
 import com.bps.entity.OrderPlanEntity;
+import com.bps.utils.SpringContextUtil;
 import com.bps.utils.Utils;
 
 public class BillRunEngine {
-	//private static BillRunEngine instance = new BillRunEngine();
-	private OrderDAOImpl orderDAO;
-	private OrderPlanDAOImpl orderplanDAO;
-	private OrderItemDAOImpl orderitemDAO;
-	private AbstractDAO invoiceDAO;
-	private AbstractDAO invoiceitemDAO;
+	private static BillRunEngine instance = new BillRunEngine();
+	private OrderDAOImpl orderDAO = (OrderDAOImpl) SpringContextUtil.getBean("orderDAO");
+	private OrderPlanDAOImpl orderplanDAO = (OrderPlanDAOImpl) SpringContextUtil.getBean("orderplanDAO");
+	private OrderItemDAOImpl orderitemDAO = (OrderItemDAOImpl) SpringContextUtil.getBean("orderitemDAO");
+	private InvoiceDAOImpl invoiceDAO = (InvoiceDAOImpl) SpringContextUtil.getBean("invoiceDAO");
+	private InvoiceItemDAOImpl invoiceitemDAO = (InvoiceItemDAOImpl) SpringContextUtil.getBean("invoiceitemDAO");
 	
-//	public static BillRunEngine getInstance() {
-//		return instance;
-//	}
-//	
-//	private BillRunEngine() {
-//		
-//	}
+	public static BillRunEngine getInstance() {
+		return instance;
+	}
+	
+	private BillRunEngine() {
+		
+	}
 	
 	@Transactional
 	public String Run(BillRunEntity entity) {
@@ -124,25 +126,5 @@ public class BillRunEngine {
 		// return invoiceid
 		
 		return invoiceId;
-	}
-	
-	public void setOrderDAO(OrderDAOImpl dao) {
-		this.orderDAO = dao;
-	}
-	
-	public void setOrderplanDAO(OrderPlanDAOImpl dao) {
-		this.orderplanDAO = dao;
-	}
-	
-	public void setOrderitemDAO(OrderItemDAOImpl dao) {
-		this.orderitemDAO = dao;
-	}
-	
-	public void setInvoiceDAO(AbstractDAO dao) {
-		this.invoiceDAO = dao;
-	}
-	
-	public void setInvoiceitemDAO(AbstractDAO dao) {
-		this.invoiceitemDAO = dao;
 	}
 }
