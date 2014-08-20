@@ -14,6 +14,11 @@ public class OrderPlanDAOImpl extends RWDAO {
 		return this.sessionFactory.getCurrentSession().createQuery("from OrderPlanEntity").list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<AbstractEntity> getAllEntity(String orderId) {
+		return this.sessionFactory.getCurrentSession().createQuery("from OrderPlanEntity where ORDERID=" + orderId).list();
+	}
+	
 	@Override
 	public void deleteEntity(int entityId) {
 		OrderPlanEntity entity = (OrderPlanEntity) sessionFactory.getCurrentSession()

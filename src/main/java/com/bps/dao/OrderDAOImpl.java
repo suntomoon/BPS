@@ -29,6 +29,11 @@ public class OrderDAOImpl extends RWDAO {
 				.load(OrderEntity.class, entityId);
 		return entity;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AbstractEntity> getAllEntity(String customerId) {
+		return this.sessionFactory.getCurrentSession().createQuery("from OrderEntity where CUSTOMERID=" + customerId).list();
+	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		 this.sessionFactory = sessionFactory;

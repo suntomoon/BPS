@@ -41,6 +41,7 @@ create table ORDERITEM (
 	CHARGETYPE varchar(20),
 	CHARGEMODE varchar(20),
 	AMOUNT varchar(20),
+	BILLRUNDATE varchar(20),
 	primary key(ID),
 	CONSTRAINT `ORDERITEM_FK_1` FOREIGN KEY (`ORDERPLANID`) REFERENCES `ORDERPLAN` (`ID`) on delete cascade on update cascade
 ) engine=innodb default charset=utf8 auto_increment=1;

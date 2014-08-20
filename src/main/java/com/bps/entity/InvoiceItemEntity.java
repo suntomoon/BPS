@@ -19,6 +19,9 @@ public class InvoiceItemEntity extends AbstractEntity {
     @Column(name="INVOICEITEMNAME")
     private String invoiceitemname;
    
+    @Column(name="INVOICEID")
+    private int invoiceid;
+    
     @Column(name="AMOUNT")
     private String amount;
     
@@ -36,6 +39,14 @@ public class InvoiceItemEntity extends AbstractEntity {
    
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+    
+    public int getInvoiceid() {
+        return invoiceid;
+    }
+   
+    public void setInvoiceid(int invoiceid) {
+        this.invoiceid = invoiceid;
     }
    
     public Integer getId() {

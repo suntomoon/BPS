@@ -31,6 +31,9 @@ public class OrderItemEntity extends AbstractEntity {
     @Column(name="AMOUNT")
     private String amount;
     
+    @Column(name="BILLRUNDATE")
+    private String billrundate;
+    
     public String getOrderplanid() {
         return orderplanid;
     }
@@ -68,6 +71,13 @@ public class OrderItemEntity extends AbstractEntity {
     }
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+    
+    public String getBillrundate() {
+        return billrundate;
+    }
+    public void setBillrundate(String billrundate) {
+        this.billrundate = billrundate;
     }
    
     public Integer getId() {
