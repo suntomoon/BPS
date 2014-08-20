@@ -18,11 +18,15 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 	private static final Logger logger = Logger.getLogger(EditProductRatePlanAction.class);
 	//List of products; Setter and Getter are below
 	private List<AbstractEntity> productrateplans;
+	private List<AbstractEntity> products;
+	private List<AbstractEntity> productitems;
 	//Product object to be added; Setter and Getter are below
 	private ProductRatePlanEntity productrateplan;
 	
 	//Productrateplan manager injected by spring context; This is cool !!
+	private AbstractManager productManager;
 	private AbstractManager productrateplanManager;
+	private AbstractManager productitemManager;
 
 	//This method return list of productrateplan in database
 	public String listProductrateplans() {
@@ -51,11 +55,11 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 	public void prepare() throws Exception {
 		productrateplan = null;
 	}
-
-	public void setProductrateplanManager(AbstractManager productrateplanManager) {
-		this.productrateplanManager = productrateplanManager;
-	}
-
+	
+	
+	/**
+	 *Setters & getters 
+	 */
 	public List<AbstractEntity> getProductrateplans() {
 		return productrateplans;
 	}
@@ -64,11 +68,54 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 		this.productrateplans = productrateplans;
 	}
 
+	public List<AbstractEntity> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<AbstractEntity> products) {
+		this.products = products;
+	}
+
+	public List<AbstractEntity> getProductitems() {
+		return productitems;
+	}
+
+	public void setProductitems(List<AbstractEntity> productitems) {
+		this.productitems = productitems;
+	}
+
 	public ProductRatePlanEntity getProductrateplan() {
 		return productrateplan;
 	}
 
-	public void setProductrateplan(ProductRatePlanEntity product) {
-		this.productrateplan = product;
+	public void setProductrateplan(ProductRatePlanEntity productrateplan) {
+		this.productrateplan = productrateplan;
 	}
+
+	public AbstractManager getProductManager() {
+		return productManager;
+	}
+
+	public void setProductManager(AbstractManager productManager) {
+		this.productManager = productManager;
+	}
+
+	public AbstractManager getProductrateplanManager() {
+		return productrateplanManager;
+	}
+
+	public void setProductrateplanManager(AbstractManager productrateplanManager) {
+		this.productrateplanManager = productrateplanManager;
+	}
+
+	public AbstractManager getProductitemManager() {
+		return productitemManager;
+	}
+
+	public void setProductitemManager(AbstractManager productitemManager) {
+		this.productitemManager = productitemManager;
+	}
+	
+	
+
 }

@@ -23,6 +23,11 @@ public class ProductManagerImpl implements AbstractManager {
 	 }
 	 
 	 @Transactional
+	 public List<AbstractEntity> getAllEntity(int entityId) {
+		 return dao.getAllEntity();
+	 }
+	 
+	 @Transactional
 	 public void deleteEntity(Integer entityId) {
 		 dao.deleteEntity(entityId);
 	 }

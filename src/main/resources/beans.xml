@@ -111,14 +111,23 @@
 	        <ref bean="productrateplanManager"/>
 	     </property>
     </bean>
+    <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
+        <property name="productrateplanDAO" ref="productrateplanDAO"/>
+    </bean>
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="productrateplanDAO" class="com.bps.dao.ProductRatePlanDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
     <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
         <property name="productrateplanDAO" ref="productrateplanDAO"/>
     </bean>
-    
      <!-- These beans are injected automatically by spring context -->
     <bean id="productrateplanDAO" class="com.bps.dao.ProductRatePlanDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
+        <property name="productrateplanDAO" ref="productrateplanDAO"/>
     </bean>
     
     <!-- ProductItem -->
