@@ -41,7 +41,6 @@
 	    </tr>
 	</table> 
 </s:form>
- 
      
 <h3>Product Items</h3>
 <c:if  test="${!empty productitems}">
@@ -64,42 +63,5 @@
 		</c:forEach>
 	</table>
 </c:if>
-
-<h3>Products</h3>
-<c:if  test="${!empty products}">
-	<table class="list">
-		<tr>
-		    <th align="left">ProductName</th>
-		    <th align="left">Description</th>
-		    <th align="left">Operation</th>
-		</tr>
-		<c:forEach items="${products}" var="pro">
-		    <tr>
-		        <td>${pro.productName} </td>
-		        <td>${pro.productDescription}</td>
-		        <td><a href="deleteProduct/${pro.id}">delete</a></td>
-		    </tr>
-		</c:forEach>
-	</table>
-</c:if>
-
-<h3>Product Rate Plans</h3>
-<c:if  test="${!empty productrateplans}">
-	<table class="list">
-		<tr>
-		    <th align="left">Product</th>
-		    <th align="left">Rate Plan</th>
-		    <th align="left">Description</th>
-		</tr>
-		<c:forEach items="${productrateplans}" var="prrp">
-		    <tr>
-		        <td>${prrp.productname} </td>
-		        <td>${prrp.productrateplanname} </td>
-		        <td>${prrp.productrateplandescription}</td>
-		    </tr>
-		</c:forEach>
-	</table>
-</c:if>
- 
 </body>
 </html>

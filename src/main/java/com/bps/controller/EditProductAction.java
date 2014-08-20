@@ -18,15 +18,11 @@ public class EditProductAction extends ActionSupport implements Preparable
 	private static final Logger logger = Logger.getLogger(EditProductAction.class);
 	//List of products; Setter and Getter are below
 	private List<AbstractEntity> products;
-	private List<AbstractEntity> productrateplans;
-	private List<AbstractEntity> productitems;
 	//Product object to be added; Setter and Getter are below
 	private ProductEntity product;
 	
 	//Product manager injected by spring context; This is cool !!
 	private AbstractManager productManager;
-	private AbstractManager productrateplanManager;
-	private AbstractManager productitemManager;
 
 	//This method return list of products in database
 	public String listProducts() {
@@ -59,29 +55,12 @@ public class EditProductAction extends ActionSupport implements Preparable
 	/**
 	 * Setters & getters
 	 */
-
 	public List<AbstractEntity> getProducts() {
 		return products;
 	}
 
 	public void setProducts(List<AbstractEntity> products) {
 		this.products = products;
-	}
-
-	public List<AbstractEntity> getProductrateplans() {
-		return productrateplans;
-	}
-
-	public void setProductrateplans(List<AbstractEntity> productrateplans) {
-		this.productrateplans = productrateplans;
-	}
-
-	public List<AbstractEntity> getProductitems() {
-		return productitems;
-	}
-
-	public void setProductitems(List<AbstractEntity> productitems) {
-		this.productitems = productitems;
 	}
 
 	public ProductEntity getProduct() {
@@ -99,22 +78,4 @@ public class EditProductAction extends ActionSupport implements Preparable
 	public void setProductManager(AbstractManager productManager) {
 		this.productManager = productManager;
 	}
-
-	public AbstractManager getProductrateplanManager() {
-		return productrateplanManager;
-	}
-
-	public void setProductrateplanManager(AbstractManager productrateplanManager) {
-		this.productrateplanManager = productrateplanManager;
-	}
-
-	public AbstractManager getProductitemManager() {
-		return productitemManager;
-	}
-
-	public void setProductitemManager(AbstractManager productitemManager) {
-		this.productitemManager = productitemManager;
-	}
-
-	
 }
