@@ -15,26 +15,38 @@
 		padding: 5px;
 	}
 	</style>
+	<script type="text/javascript">
+		function setValue(){
+			var index = document.getElementById("product").selectedIndex;
+			var option = document.getElementById("product").options[index];
+			document.getElementById("Product ID").value=option.value;
+			document.getElementById("Product Name").value=option.text;
+			return true;
+		}
+	</script>
 </head>
 <body>
  
 <h2>Product RatePlan Editor</h2>
  
-<s:form method="post" action="addProductrateplan">
+<s:form method="post" action="addProductrateplan" onsubmit="setValue()">
     <table>
    		 <tr> 
    		 	<td>Product: 
-	   		 	<c:if  test="${!empty products}">
-		        	<select name="productrateplan.productname">
+			</td>
+			<td><c:if  test="${!empty products}">
+		        	<select id="product" onchange="return setValue();" style="width: 155px">
 	      				<c:forEach items="${products}" var="pro">
-	  			    		<option value="${pro.productName}" value="${pro.id}">${pro.productName}-${pro.id}</option>
+	  			    		<option value="${pro.id}">${pro.productName}</option>
 	    				</c:forEach>
 					</select>
-				</c:if>
-			</td> 
+				</c:if></td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="Product ID" name="productrateplan.productid"/></td> 
+	        <td>
+	        	<s:hidden id="Product ID" value="1" name="productrateplan.productid" />
+	        	<s:hidden id="Product Name" value="name" name="productrateplan.productname" />
+	        </td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Rate Plan" name="productrateplan.productrateplanname"/></td> 

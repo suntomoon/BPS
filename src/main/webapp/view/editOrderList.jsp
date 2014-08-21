@@ -35,6 +35,9 @@
 	        <td><s:textfield key="label.orderenddate" name="order.orderenddate"/></td>
 	    </tr>
 	    <tr>
+	        <td><s:label key="Daily" label="Order Type" /></td>
+	    </tr>
+	    <tr>
 	        <td>
 	        	<s:submit key="label.addorder"></s:submit>
 	        </td>
