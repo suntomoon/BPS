@@ -29,6 +29,12 @@ public class ProductItemDAOImpl extends RWDAO {
 				.load(ProductItemEntity.class, entityId);
 		return entity;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AbstractEntity> getAllEntity(String planid) {
+		return this.sessionFactory.getCurrentSession().createQuery("from ProductItemEntity "
+				+ "where PLANID=" + planid).list();
+	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		 this.sessionFactory = sessionFactory;

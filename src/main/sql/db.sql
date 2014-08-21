@@ -50,22 +50,17 @@ create table PRODUCT(
 ID int unsigned not null auto_increment, 
 NAME varchar(20), 
 DESCRIPTION varchar(100), 
-primary key(ID)
+primary key(ID, NAME)
 ) engine=innodb default charset=utf8 auto_increment=1;
 
 create table PRODUCTRATEPLAN (
 ID int unsigned not null auto_increment, 
-PRODUCTID int unsigned , 
+PRODUCTID int unsigned, 
 PRODUCTNAME varchar(20), 
 PLANNAME varchar(20), 
 PLANDESCRIPTION varchar(100), 
 primary key(ID), 
-key productid(PRODUCTID), 
-constraint fk_productrateplan 
-foreign key (productid) 
-references PRODUCT (ID) 
-ON DELETE RESTRICT 
-ON UPDATE CASCADE 
+CONSTRAINT PRODUCTID_FK FOREIGN KEY (PRODUCTID) REFERENCES PRODUCT (ID) on delete cascade on update cascade
 ) engine=innodb default charset=utf8 auto_increment=1;
 
 create table PRODUCTITEM (

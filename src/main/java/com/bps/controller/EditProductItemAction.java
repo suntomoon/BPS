@@ -18,16 +18,19 @@ public class EditProductItemAction extends ActionSupport implements Preparable
 	private static final Logger logger = Logger.getLogger(EditProductItemAction.class);
 	//List of products; Setter and Getter are below
 	private List<AbstractEntity> productitems;
+	private List<AbstractEntity> productrateplans;
 	//Product object to be added; Setter and Getter are below
 	private ProductItemEntity productitem;
 	
 	//Productrateplan manager injected by spring context; This is cool !!
 	private AbstractManager productitemManager;
+	private AbstractManager productrateplanManager;
 
 	//This method return list of productrateplan in database
 	public String listProductitems() {
 		logger.info("listProductitems method called");
 		productitems = productitemManager.getAllEntity();
+		productrateplans = productrateplanManager.getAllEntity();
 		return SUCCESS;
 	}
 
@@ -63,6 +66,14 @@ public class EditProductItemAction extends ActionSupport implements Preparable
 		this.productitems = productitems;
 	}
 
+	public List<AbstractEntity> getProductrateplans() {
+		return productrateplans;
+	}
+
+	public void setProductrateplans(List<AbstractEntity> productrateplans) {
+		this.productrateplans = productrateplans;
+	}
+
 	public ProductItemEntity getProductitem() {
 		return productitem;
 	}
@@ -78,6 +89,16 @@ public class EditProductItemAction extends ActionSupport implements Preparable
 	public void setProductitemManager(AbstractManager productitemManager) {
 		this.productitemManager = productitemManager;
 	}
+
+	public AbstractManager getProductrateplanManager() {
+		return productrateplanManager;
+	}
+
+	public void setProductrateplanManager(AbstractManager productrateplanManager) {
+		this.productrateplanManager = productrateplanManager;
+	}
+
+
 
 	
 }

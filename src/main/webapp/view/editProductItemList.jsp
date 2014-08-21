@@ -19,11 +19,22 @@
 <body>
  
 <h2>Product Item Editor</h2>
- 
+
 <s:form method="post" action="addProductitem">
     <table>
-    	<tr>
-	        <td><s:textfield key="Product Item" name="productitem.itemname"/></td> 
+	    <tr> 
+   		 	<td>ProductRatePlan: 
+	   		 	<c:if  test="${!empty productrateplans}">
+		        	<select name="productitem.planid">
+	      				<c:forEach items="${productrateplans}" var="prrp">
+	  			    		<option value="${prrp.id}" value="${prrp.productrateplanname}">${prrp.id}-${prrp.productrateplanname}</option>
+	    				</c:forEach>
+					</select>
+				</c:if>
+			</td> 
+	    </tr>
+	    <tr>
+	        <td><s:textfield key="Product Item Name" name="productitem.itemname"/></td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Charge Model" name="productitem.itemchargemodel"/></td> 

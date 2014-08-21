@@ -22,8 +22,19 @@
  
 <s:form method="post" action="addProductrateplan">
     <table>
-    	<tr>
-	        <td><s:textfield key="Product" name="productrateplan.productname"/></td> 
+   		 <tr> 
+   		 	<td>Product: 
+	   		 	<c:if  test="${!empty products}">
+		        	<select name="productrateplan.productname">
+	      				<c:forEach items="${products}" var="pro">
+	  			    		<option value="${pro.productName}" value="${pro.id}">${pro.productName}-${pro.id}</option>
+	    				</c:forEach>
+					</select>
+				</c:if>
+			</td> 
+	    </tr>
+	    <tr>
+	        <td><s:textfield key="Product ID" name="productrateplan.productid"/></td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Rate Plan" name="productrateplan.productrateplanname"/></td> 

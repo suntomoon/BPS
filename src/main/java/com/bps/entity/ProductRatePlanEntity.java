@@ -21,6 +21,12 @@ public class ProductRatePlanEntity extends AbstractEntity {
     
     @Column(name="PRODUCTNAME")
     private String productname;
+
+	@Column(name="PLANNAME")
+    private String productrateplanname;
+   
+    @Column(name="PLANDESCRIPTION")
+    private String productrateplandescription;
     
     public String getProductname() {
 		return productname;
@@ -28,12 +34,7 @@ public class ProductRatePlanEntity extends AbstractEntity {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	@Column(name="PLANNAME")
-    private String productrateplanname;
-   
-    @Column(name="PLANDESCRIPTION")
-    private String productrateplandescription;
-    
+	
     public Integer getId() {
         return id;
     }

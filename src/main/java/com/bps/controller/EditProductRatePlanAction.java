@@ -18,16 +18,19 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 	private static final Logger logger = Logger.getLogger(EditProductRatePlanAction.class);
 	//List of products; Setter and Getter are below
 	private List<AbstractEntity> productrateplans;
+	private List<AbstractEntity> products;
 	//Product object to be added; Setter and Getter are below
 	private ProductRatePlanEntity productrateplan;
 	
 	//Productrateplan manager injected by spring context; This is cool !!
 	private AbstractManager productrateplanManager;
+	private AbstractManager productManager;
 
 	//This method return list of productrateplan in database
 	public String listProductrateplans() {
 		logger.info("listProductrateplans method called");
 		productrateplans = productrateplanManager.getAllEntity();
+		products = productManager.getAllEntity();
 		return SUCCESS;
 	}
 
@@ -51,16 +54,24 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 	public void prepare() throws Exception {
 		productrateplan = null;
 	}
-	
+
 	/**
 	 *Setters & getters 
-	 */
+	 */	
 	public List<AbstractEntity> getProductrateplans() {
 		return productrateplans;
 	}
 
 	public void setProductrateplans(List<AbstractEntity> productrateplans) {
 		this.productrateplans = productrateplans;
+	}
+
+	public List<AbstractEntity> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<AbstractEntity> products) {
+		this.products = products;
 	}
 
 	public ProductRatePlanEntity getProductrateplan() {
@@ -78,5 +89,14 @@ public class EditProductRatePlanAction extends ActionSupport implements Preparab
 	public void setProductrateplanManager(AbstractManager productrateplanManager) {
 		this.productrateplanManager = productrateplanManager;
 	}
+
+	public AbstractManager getProductManager() {
+		return productManager;
+	}
+
+	public void setProductManager(AbstractManager productManager) {
+		this.productManager = productManager;
+	}
+	
 
 }

@@ -110,6 +110,9 @@
 	     <property name="productrateplanManager">
 	        <ref bean="productrateplanManager"/>
 	     </property>
+	      <property name="productManager">
+	        <ref bean="productManager"/>
+	     </property>
     </bean>
     <bean id="productrateplanManager" class="com.bps.service.ProductRatePlanManagerImpl">
         <property name="productrateplanDAO" ref="productrateplanDAO"/>
@@ -124,6 +127,9 @@
     <bean name="editProductItemAction" class="com.bps.controller.EditProductItemAction" scope="prototype">
 	     <property name="productitemManager">
 	        <ref bean="productitemManager"/>
+	     </property>
+	      <property name="productrateplanManager">
+	        <ref bean="productrateplanManager"/>
 	     </property>
     </bean>
     
