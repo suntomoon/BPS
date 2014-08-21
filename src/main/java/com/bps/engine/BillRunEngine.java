@@ -73,12 +73,16 @@ public class BillRunEngine {
 						invItem.setInvoiceid(invId);
 						
 						if(oie.getChargetype().equalsIgnoreCase("onetime")) {
-							if(oie.getBillrundate().trim().isEmpty() || Utils.getDate(oie.getBillrundate()).before(currentBillRunDate)) {
+							if(oie.getBillrundate().trim().isEmpty()) {
 								// build invItem
 								invItem.setAmount(oie.getAmount());
+								invItem.setStartdate(billRunEndDate);
+								invItem.setEnddate(billRunEndDate);
 								
 								// calculate total amount
 								totalAmount += Double.valueOf(oie.getAmount());
+							} else {
+								continue;
 							}
 						} else if(oie.getChargetype().equalsIgnoreCase("recurring")) {
 							int days = 0;
@@ -87,6 +91,8 @@ public class BillRunEngine {
 								Double temp = (Double.valueOf(oie.getAmount())*days);
 								
 								invItem.setAmount(temp.toString());
+								invItem.setStartdate(Utils.getString(oe.getOrderstartdate(), 1));
+								invItem.setEnddate(billRunEndDate);
 								
 								totalAmount += temp;
 							} else {
@@ -94,17 +100,14 @@ public class BillRunEngine {
 								Double temp = (Double.valueOf(oie.getAmount())*days);
 								
 								invItem.setAmount(temp.toString());
+								invItem.setStartdate(Utils.getString(oie.getBillrundate(), 1));
+								invItem.setEnddate(billRunEndDate);
 								
 								totalAmount += temp;
 							}
-							
-							// build invItem
-							invItem.setAmount(oie.getAmount());
-							
-							// calculate total amount
-							totalAmount += Double.valueOf(oie.getAmount());
 						}
 						
+						invItem.setInvoicename("inv-000" + invId);
 						invoiceitemDAO.addEntity(invItem);
 						
 						// update orderItem
@@ -116,6 +119,7 @@ public class BillRunEngine {
 			
 			invoice.setInvoicedate(Utils.getString(new Date()));
 			invoice.setAmount(totalAmount.toString());
+			invoice.setBalance(totalAmount.toString());
 			invoice.setInvoiceid("inv-000" + invId);
 			invoiceDAO.addEntity(invoice);
 		}

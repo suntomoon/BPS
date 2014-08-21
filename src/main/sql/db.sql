@@ -84,14 +84,18 @@ create table INVOICE (
 	INVOICEID varchar(20), 
 	INVOICEDATE varchar(20), 
 	AMOUNT varchar(20),
+	BALANCE varchar(20),
 	primary key(ID)
 ) engine=innodb default charset=utf8 auto_increment=1;
 
 create table INVOICEITEM (
 	ID int unsigned not null auto_increment, 
 	INVOICEID int unsigned, 
-	INVOICEITEMNAME varchar(20), 
+	INVOICEITEMNAME varchar(20),
+	INVOICENAME varchar(20),
 	AMOUNT varchar(20),
+	STARTDATE varchar(20),
+	ENDDATE varchar(20),
 	primary key(ID),
 	CONSTRAINT `INVITEM_FK_1` FOREIGN KEY (`INVOICEID`) REFERENCES `INVOICE` (`ID`) on delete cascade on update cascade
 ) engine=innodb default charset=utf8 auto_increment=1;

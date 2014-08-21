@@ -147,6 +147,9 @@
 	     <property name="invoiceManager">
 	        <ref bean="invoiceManager"/>
 	     </property>
+	     <property name="invoiceitemManager">
+	        <ref bean="invoiceitemManager"/>
+	     </property>
     </bean>
     
     <bean id="invoiceManager" class="com.bps.service.InvoiceManagerImpl">
@@ -157,14 +160,7 @@
     <bean id="invoiceDAO" class="com.bps.dao.InvoiceDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    
-    <!-- InvoiceItem -->
-    <bean name="editInvoiceItemAction" class="com.bps.controller.EditInvoiceItemAction" scope="prototype">
-	     <property name="invoiceitemManager">
-	        <ref bean="invoiceitemManager"/>
-	     </property>
-    </bean>
-    
+     
     <bean id="invoiceitemManager" class="com.bps.service.InvoiceItemManagerImpl">
         <property name="invoiceitemDAO" ref="invoiceitemDAO"/>
     </bean>

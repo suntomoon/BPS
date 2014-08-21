@@ -18,7 +18,16 @@ public class InvoiceItemEntity extends AbstractEntity {
      
     @Column(name="INVOICEITEMNAME")
     private String invoiceitemname;
+    
+    @Column(name="INVOICENAME")
+    private String invoicename;
    
+    @Column(name="STARTDATE")
+    private String startdate;
+    
+    @Column(name="ENDDATE")
+    private String enddate;
+    
     @Column(name="INVOICEID")
     private int invoiceid;
     
@@ -31,6 +40,30 @@ public class InvoiceItemEntity extends AbstractEntity {
    
     public void setInvoiceitemname(String invoiceitemname) {
         this.invoiceitemname = invoiceitemname;
+    }
+    
+    public String getInvoicename() {
+        return invoicename;
+    }
+   
+    public void setInvoicename(String invoicename) {
+        this.invoicename = invoicename;
+    }
+    
+    public String getStartdate() {
+        return startdate;
+    }
+   
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
+    
+    public String getEnddate() {
+        return enddate;
+    }
+   
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
     }
      
     public String getAmount() {

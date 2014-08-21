@@ -29,6 +29,20 @@ public class Utils {
 		return dateStr;
 	}
 	
+	public static String getString(String dateStr, int day) {
+		String outputStr = "";
+		try {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(getDate(dateStr));
+			cal.add(Calendar.DAY_OF_YEAR, day);
+			outputStr = getString(cal.getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return outputStr;
+	}
+	
 	public static int getDays(Date date1, Date date2) {
 		return (int)((date1.getTime() - date2.getTime())/ 1000 / 60 / 60 / 24);
 	}

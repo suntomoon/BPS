@@ -25,6 +25,9 @@ public class InvoiceEntity extends AbstractEntity {
     @Column(name="AMOUNT")
     private String amount;
     
+    @Column(name="BALANCE")
+    private String balance;
+    
     public String getInvoiceid() {
         return invoiceid;
     }
@@ -47,6 +50,14 @@ public class InvoiceEntity extends AbstractEntity {
    
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+    
+    public String getBalance() {
+        return amount;
+    }
+   
+    public void setBalance(String balance) {
+        this.balance = balance;
     }
    
     public Integer getId() {
