@@ -7,12 +7,14 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bps.abstarct.AbstractEntity;
+import com.bps.abstarct.AbstractFactory;
 import com.bps.dao.InvoiceDAOImpl;
 import com.bps.dao.InvoiceItemDAOImpl;
 import com.bps.dao.OrderDAOImpl;
 import com.bps.dao.OrderItemDAOImpl;
 import com.bps.dao.OrderPlanDAOImpl;
 import com.bps.entity.BillRunEntity;
+import com.bps.entity.ConcreteFactory;
 import com.bps.entity.InvoiceEntity;
 import com.bps.entity.InvoiceItemEntity;
 import com.bps.entity.OrderEntity;
@@ -28,6 +30,7 @@ public class BillRunEngine {
 	private OrderItemDAOImpl orderitemDAO = (OrderItemDAOImpl) SpringContextUtil.getBean("orderitemDAO");
 	private InvoiceDAOImpl invoiceDAO = (InvoiceDAOImpl) SpringContextUtil.getBean("invoiceDAO");
 	private InvoiceItemDAOImpl invoiceitemDAO = (InvoiceItemDAOImpl) SpringContextUtil.getBean("invoiceitemDAO");
+	private AbstractFactory factory = new ConcreteFactory();
 	
 	public static BillRunEngine getInstance() {
 		return instance;
@@ -52,7 +55,7 @@ public class BillRunEngine {
 		
 		if(orders.size() > 0) {
 			//Build Invoice
-			InvoiceEntity invoice = new InvoiceEntity();
+			InvoiceEntity invoice = (InvoiceEntity)factory.createEntity("Invoice");
 			invoiceDAO.addEntity(invoice);
 			int invId = invoice.getId();
 			Double totalAmount = 0.0;
@@ -66,7 +69,7 @@ public class BillRunEngine {
 					
 					for(AbstractEntity orderitem : orderitems) {
 						//Build InvoiceItem
-						InvoiceItemEntity invItem = new InvoiceItemEntity();
+						InvoiceItemEntity invItem = (InvoiceItemEntity)factory.createEntity("InvoiceItem");
 						OrderItemEntity oie = (OrderItemEntity) orderitem;
 						
 						invItem.setInvoiceitemname(oie.getOrderitemname());
