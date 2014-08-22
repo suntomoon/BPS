@@ -9,9 +9,9 @@ body {
 }
 
 #content {
-	margin: 113px 0px 0px 150px;
+	margin: 90px 0px 0px 150px;
 	display: block;
-	padding: 10px;
+	padding: 0px;
 }
 
 #header {
@@ -19,7 +19,7 @@ body {
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 112px;
+	height:	70px;
 	position: fixed;
 	background-color: #ffffff;
 	border: 1px solid #888;
@@ -27,7 +27,7 @@ body {
 
 #navigation {
 	display: block;
-	top: 113px;
+	top: 90px;
 	left: 0px;
 	width: 142px;
 	height: 100%;
