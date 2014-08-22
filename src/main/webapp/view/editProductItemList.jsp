@@ -15,6 +15,15 @@
 		padding: 5px;
 	}
 	</style>
+	<script type="text/javascript">
+		function setValue(){
+			var index = document.getElementById("productrateplan").selectedIndex;
+			var option = document.getElementById("productrateplan").options[index];
+			document.getElementById("Rateplan ID").value=option.value;
+			document.getElementById("Rateplan Name").value=option.text;
+			return true;
+		}
+	</script>
 </head>
 <body>
  
@@ -24,14 +33,21 @@
     <table>
 	    <tr> 
    		 	<td>ProductRatePlan: 
+   		 	</td>
+   		 	<td>
 	   		 	<c:if  test="${!empty productrateplans}">
-		        	<select name="productitem.planid">
+		        	<select id="productrateplan" onchange="return setValue();" style="width: 155px">
 	      				<c:forEach items="${productrateplans}" var="prrp">
-	  			    		<option value="${prrp.id}" value="${prrp.productrateplanname}">${prrp.id}-${prrp.productrateplanname}</option>
+	  			    		<option value="${prrp.id}">${prrp.productrateplanname}</option>
 	    				</c:forEach>
 					</select>
 				</c:if>
 			</td> 
+	    </tr>
+	     <tr>
+	        <td>
+	        	<s:hidden id="ProductRatePlan ID" value="1" name="productitem.planid" />
+	        </td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Product Item Name" name="productitem.itemname"/></td> 
