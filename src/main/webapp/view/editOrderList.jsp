@@ -15,19 +15,58 @@
 		padding: 5px;
 	}
 	</style>
+	<script type="text/javascript">
+		function setValue(){
+			var index = document.getElementById("customer").selectedIndex;
+			var option = document.getElementById("customer").options[index];
+			document.getElementById("customerid").value=option.value;
+			document.getElementById("customername").value=option.text;
+		}
+	</script>
 </head>
 <body>
  
 <h2>Order Editor</h2>
  
-<s:form method="post" action="addOrder">
+<s:form method="post" action="addOrder" onsubmit="setValue()">
     <table>
+    	<tr>
+    		<td>Customer: 
+			</td>
+			<td><c:if  test="${!empty customers}">
+		        	<select id="customer" style="width: 155px">
+	      				<c:forEach items="${customers}" var="cus">
+	  			    		<option value="${cus.id}">${cus.firstname} ${cus.lastname}</option>
+	    				</c:forEach>
+					</select>
+				</c:if></td> 
+    	</tr>
 	    <tr>
-	        <td><s:textfield key="label.customerid" name="order.customerid"/></td> 
+	        <td><s:hidden id="customerid" value="1" name="order.customerid" />
+	        	<s:hidden id="customername" value="name" name="order.customername" /></td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="label.customername" name="order.customername"/></td> 
-	    </tr>
+    		<td>Product: 
+			</td>
+			<td><c:if  test="${!empty products}">
+		        	<select id="product" style="width: 155px">
+	      				<c:forEach items="${products}" var="pro">
+	  			    		<option value="${pro.id}">${pro.productName}</option>
+	    				</c:forEach>
+					</select>
+				</c:if></td> 
+    	</tr>
+	    <tr>
+    		<td>RatePlan: 
+			</td>
+			<td><c:if  test="${!empty productrateplans}">
+		        	<select id="productrateplan" style="width: 155px">
+	      				<c:forEach items="${productrateplans}" var="prp">
+	  			    		<option value="${prp.id}">${prp.productrateplanname}</option>
+	    				</c:forEach>
+					</select>
+				</c:if></td> 
+    	</tr>
 	    <tr>
 	        <td><s:textfield key="label.orderstartdate" name="order.orderstartdate"/></td>
 	    </tr>

@@ -60,6 +60,15 @@
 	     <property name="orderitemManager">
 	        <ref bean="orderitemManager"/>
 	     </property>
+	     <property name="customerManager">
+	        <ref bean="customerManager"/>
+	     </property>
+	     <property name="productManager">
+	        <ref bean="productManager"/>
+	     </property>
+	     <property name="productrateplanManager">
+	        <ref bean="productrateplanManager"/>
+	     </property>
     </bean>
     
     <bean id="orderManager" class="com.bps.service.OrderManagerImpl">
