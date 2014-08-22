@@ -43,5 +43,6 @@
 	<include file="struts-productitem.xml"/>
 	<include file="struts-invoice.xml"/>
 	<include file="struts-billrun.xml"/>
+	<include file="struts-login.xml"/>
 	
 </struts>

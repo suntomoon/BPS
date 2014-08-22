@@ -195,6 +195,22 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <!-- Login -->
+    <bean name="editLoginAction" class="com.bps.controller.EditLoginAction" scope="prototype">
+	     <property name="loginManager">
+	        <ref bean="loginManager"/>
+	     </property>
+    </bean>
+    
+    <bean id="loginManager" class="com.bps.service.LoginManagerImpl">
+        <property name="loginDAO" ref="loginDAO"/>
+    </bean>
+    
+     <!-- These beans are injected automatically by spring context -->
+    <bean id="loginDAO" class="com.bps.dao.LoginDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
     <bean class="com.bps.utils.SpringContextUtil"></bean>
     
     <!-- Configure jdbc.properties -->
