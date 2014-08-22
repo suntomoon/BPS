@@ -66,9 +66,11 @@ CONSTRAINT PRODUCTID_FK FOREIGN KEY (PRODUCTID) REFERENCES PRODUCT (ID) on delet
 create table PRODUCTITEM (
 ID int unsigned not null auto_increment, 
 PLANID int unsigned , 
+PLANNAME varchar(20),
 ITEMNAME varchar(20), 
-CHARGEMODEL varchar(20), 
 CHARGETYPE varchar(20), 
+CHARGEMODEL varchar(20), 
+AMOUNT varchar(20),
 PRODUCTITEMDESCRIPTION varchar(100), 
 primary key(ID), 
 key planid(PLANID), 

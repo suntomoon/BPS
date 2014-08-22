@@ -29,14 +29,14 @@
  
 <h2>Product Item Editor</h2>
 
-<s:form method="post" action="addProductitem">
+<s:form method="post" action="addProductitem" onsubmit="setValue()">
     <table>
 	    <tr> 
    		 	<td>ProductRatePlan: 
    		 	</td>
    		 	<td>
 	   		 	<c:if  test="${!empty productrateplans}">
-		        	<select id="productrateplan" onchange="return setValue();" style="width: 155px">
+		        	<select id="productrateplan" style="width: 155px">
 	      				<c:forEach items="${productrateplans}" var="prrp">
 	  			    		<option value="${prrp.id}">${prrp.productrateplanname}</option>
 	    				</c:forEach>
@@ -44,19 +44,23 @@
 				</c:if>
 			</td> 
 	    </tr>
-	     <tr>
+	    <tr>
 	        <td>
-	        	<s:hidden id="ProductRatePlan ID" value="1" name="productitem.planid" />
+	        	<s:hidden id="Rateplan ID" value="1" name="productitem.planid" />
+	        	<s:hidden id="Rateplan Name" value="name" name="productitem.planname" />
 	        </td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="Product Item Name" name="productitem.itemname"/></td> 
+	        <td><s:textfield key="Item Name" name="productitem.itemname"/></td> 
+	    </tr>
+	    <tr>
+	        <td><s:textfield key="Charge Type" name="productitem.itemchargetype"/></td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Charge Model" name="productitem.itemchargemodel"/></td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="Charge Type" name="productitem.itemchargetype"/></td> 
+	        <td><s:textfield key="Amount" name="productitem.itemamount"/></td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Description" name="productitem.itemdescription"/></td>
@@ -73,17 +77,21 @@
 <c:if  test="${!empty productitems}">
 	<table class="list">
 		<tr>
+			<th align="left">Rate Plan</th>
 		    <th align="left">Product Item</th>
-		    <th align="left">Charge Model</th>
 		    <th align="left">Charge Type</th>
+		    <th align="left">Charge Model</th>
+			<th align="left">Amount</th>
 		    <th align="left">Description</th>
 		    <th align="left">Operation</th>
 		</tr>
 		<c:forEach items="${productitems}" var="prit">
 		    <tr>
+		    	<td>${prit.planname}</td>
 		        <td>${prit.itemname} </td>
-		        <td>${prit.itemchargemodel} </td>
 		        <td>${prit.itemchargetype}</td>
+		        <td>${prit.itemchargemodel}</td>
+		        <td>${prit.itemamount}</td>
 		        <td>${prit.itemdescription} </td>
 		        <td><a href="deleteProductitem/${prit.id}">delete</a></td>
 		    </tr>

@@ -22,11 +22,11 @@ public class EditProductItemAction extends ActionSupport implements Preparable
 	//Product object to be added; Setter and Getter are below
 	private ProductItemEntity productitem;
 	
-	//Productrateplan manager injected by spring context; This is cool !!
+	//productitemManager manager injected by spring context; This is cool !!
 	private AbstractManager productitemManager;
 	private AbstractManager productrateplanManager;
 
-	//This method return list of productrateplan in database
+	//This method return list of productitemManager in database
 	public String listProductitems() {
 		logger.info("listProductitems method called");
 		productitems = productitemManager.getAllEntity();
@@ -34,14 +34,14 @@ public class EditProductItemAction extends ActionSupport implements Preparable
 		return SUCCESS;
 	}
 
-	//This method will be called when a productrateplan object is added
+	//This method will be called when a productitemManager object is added
 	public String addProductitem() {
 		logger.info("addProductitem method called");
 		productitemManager.addEntity(productitem);
 		return SUCCESS;
 	}
 
-	//Deletes a productrateplan by it's id passed in path parameter
+	//Deletes a productitemManager by it's id passed in path parameter
 	public String deleteProductitem() {
 		logger.info("deleteProductitem method called");
 		productitemManager.deleteEntity(productitem.getId());

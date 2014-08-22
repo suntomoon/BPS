@@ -19,6 +19,9 @@ public class ProductItemEntity extends AbstractEntity {
     @Column(name="PLANID")
     private Integer planid;
     
+    @Column(name="PLANNAME")
+    private String planname;
+    
     @Column(name="ITEMNAME")
     private String itemname;
 
@@ -28,7 +31,10 @@ public class ProductItemEntity extends AbstractEntity {
     @Column(name="CHARGETYPE")
     private String itemchargetype;
     
-    @Column(name="PRODUCTITEMDESCRIPTION")
+    @Column(name="AMOUNT")
+    private String itemamount;
+
+	@Column(name="PRODUCTITEMDESCRIPTION")
     private String itemdescription;
 
 	public Integer getId() {
@@ -45,6 +51,22 @@ public class ProductItemEntity extends AbstractEntity {
 
 	public void setPlanid(Integer planid) {
 		this.planid = planid;
+	}
+	
+	public String getPlanname() {
+		return planname;
+	}
+
+	public void setPlanname(String planname) {
+		this.planname = planname;
+	}
+
+	public String getItemamount() {
+		return itemamount;
+	}
+
+	public void setItemamount(String itemamount) {
+		this.itemamount = itemamount;
 	}
 
 	public String getItemname() {
@@ -78,7 +100,6 @@ public class ProductItemEntity extends AbstractEntity {
 	public void setItemdescription(String itemdescription) {
 		this.itemdescription = itemdescription;
 	}
-    
 
     
 }

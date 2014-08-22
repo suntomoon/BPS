@@ -35,7 +35,7 @@
    		 	<td>Product: 
 			</td>
 			<td><c:if  test="${!empty products}">
-		        	<select id="product" onchange="return setValue();" style="width: 155px">
+		        	<select id="product" style="width: 155px">
 	      				<c:forEach items="${products}" var="pro">
 	  			    		<option value="${pro.id}">${pro.productName}</option>
 	    				</c:forEach>
