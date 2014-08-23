@@ -9,14 +9,14 @@
 	    	 1) class is set to 'editEmployeeAction' which is bean defined by Spring context
 	    	 2) We have given the method to be called here as well;
 	   	-->
-		<action name="goLogin" class="editLoginAction" method="toLogin">
+		<action name="toLogin" class="editLoginAction" method="toLogin">
 			<result>/view/login.jsp</result>
 		</action>
 		<action name="signIn" class="editLoginAction" method="signIn">
-			<result type="redirect">goLogin</result>
+			<result type="redirect">toLogin</result>
 		</action>
 		<action name="signUp" class="editLoginAction" method="signUp">
-			<result type="redirect">goLogin</result>
+			<result type="redirect">toLogin</result>
 		</action>
 	</package>
 </struts>
