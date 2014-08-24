@@ -10,7 +10,7 @@ import com.bps.abstarct.AbstractEntity;
 
 @Entity
 @Table(name="PRODUCTITEM")
-public class ProductItemEntity extends AbstractEntity {
+public class ProductItemEntity extends AbstractEntity implements Cloneable {
 	@Id
     @Column(name="ID")
     @GeneratedValue
@@ -101,5 +101,12 @@ public class ProductItemEntity extends AbstractEntity {
 		this.itemdescription = itemdescription;
 	}
 
-    
+	public OrderItemEntity clone () throws CloneNotSupportedException {
+		OrderItemEntity orderitem = (OrderItemEntity)new ConcreteFactory().createEntity("OrderItem");
+		orderitem.setAmount(this.getItemamount());
+		orderitem.setChargemode(this.getItemchargemodel());
+		orderitem.setChargetype(this.getItemchargetype());
+		orderitem.setOrderitemname(this.getItemname());
+		return orderitem;
+	}
 }

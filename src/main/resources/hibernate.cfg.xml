@@ -16,6 +16,5 @@
         <mapping class="com.bps.entity.InvoiceEntity" />
         <mapping class="com.bps.entity.InvoiceItemEntity" />
         <mapping class="com.bps.entity.BillRunEntity" />
-        <mapping class="com.bps.entity.LoginEntity" />
     </session-factory>
 </hibernate-configuration>

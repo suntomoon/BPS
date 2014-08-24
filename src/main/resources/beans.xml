@@ -69,6 +69,9 @@
 	     <property name="productrateplanManager">
 	        <ref bean="productrateplanManager"/>
 	     </property>
+	     <property name="productitemManager">
+	        <ref bean="productitemManager"/>
+	     </property>
     </bean>
     
     <bean id="orderManager" class="com.bps.service.OrderManagerImpl">
@@ -184,6 +187,9 @@
 	     <property name="billrunManager">
 	        <ref bean="billrunManager"/>
 	     </property>
+	      <property name="customerManager">
+	        <ref bean="customerManager"/>
+	     </property>
     </bean>
     
     <bean id="billrunManager" class="com.bps.service.BillRunManagerImpl">
@@ -192,22 +198,6 @@
     
      <!-- These beans are injected automatically by spring context -->
     <bean id="billrunDAO" class="com.bps.dao.BillRunDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    
-    <!-- Login -->
-    <bean name="editLoginAction" class="com.bps.controller.EditLoginAction" scope="prototype">
-	     <property name="loginManager">
-	        <ref bean="loginManager"/>
-	     </property>
-    </bean>
-    
-    <bean id="loginManager" class="com.bps.service.LoginManagerImpl">
-        <property name="loginDAO" ref="loginDAO"/>
-    </bean>
-    
-     <!-- These beans are injected automatically by spring context -->
-    <bean id="loginDAO" class="com.bps.dao.LoginDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     

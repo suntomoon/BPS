@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Order</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <style>
 	table.list
 	{
@@ -16,11 +17,45 @@
 	}
 	</style>
 	<script type="text/javascript">
+		$(document).ready(function(){
+		  $("#product").change(function(){
+			  var product = $("#product").val();
+			    //alert(product);
+			    $.ajax({
+			       url:'getRatePlan',
+			       type:'post',
+			       dataType:'json',
+			       data:{'productId':product},
+			       success:function(json) {
+			    	   //alert(json);
+			    	   //var data =(new Function("","return "+json))();
+			    	   //var data=eval("("+json+")");
+			    	   //alert(json.length);
+			    	  
+			    	  $('#productrateplan').find('option').remove();
+			    	   
+			    	   $.each(json,function(idx,item){
+			    		   $("#productrateplan").append("<option value='" + item.id + "'>" + item.productrateplanname +"</option>");
+			    		   //alert("name:"+item.id+",value:"+item.productname); 
+		    		   	});
+			       }
+			    });
+		  });
+		});
+		
 		function setValue(){
 			var index = document.getElementById("customer").selectedIndex;
 			var option = document.getElementById("customer").options[index];
-			document.getElementById("customerid").value=option.value;
-			document.getElementById("customername").value=option.text;
+			document.getElementById("customerid").value = option.value;
+			document.getElementById("customername").value = option.text;
+			
+			index = document.getElementById("product").selectedIndex;
+			option = document.getElementById("product").options[index];
+			document.getElementById("productid").value = option.value;
+			
+			index = document.getElementById("productrateplan").selectedIndex;
+			option = document.getElementById("productrateplan").options[index];
+			document.getElementById("productrateplanid").value = option.value;
 		}
 	</script>
 </head>
@@ -43,7 +78,10 @@
     	</tr>
 	    <tr>
 	        <td><s:hidden id="customerid" value="1" name="order.customerid" />
-	        	<s:hidden id="customername" value="name" name="order.customername" /></td> 
+	        	<s:hidden id="customername" value="name" name="order.customername" />
+	        	<s:hidden id="productid" value="1" name="product.id" />
+	        	<s:hidden id="productrateplanid" value="1" name="productrateplan.id" />
+	        </td> 
 	    </tr>
 	    <tr>
     		<td>Product: 

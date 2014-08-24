@@ -10,7 +10,7 @@ import com.bps.abstarct.AbstractEntity;
 
 @Entity
 @Table(name="PRODUCTRATEPLAN")
-public class ProductRatePlanEntity extends AbstractEntity {
+public class ProductRatePlanEntity extends AbstractEntity implements Cloneable {
 	@Id
     @Column(name="ID")
     @GeneratedValue
@@ -63,4 +63,9 @@ public class ProductRatePlanEntity extends AbstractEntity {
 		this.productrateplandescription = productrateplandescription;
 	}
     
+	public OrderPlanEntity clone () throws CloneNotSupportedException {
+		OrderPlanEntity orderplan = (OrderPlanEntity)new ConcreteFactory().createEntity("OrderPlan");
+		orderplan.setOrderplanname(this.getProductrateplanname());
+		return orderplan;
+	}
 }

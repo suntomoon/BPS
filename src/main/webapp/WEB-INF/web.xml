@@ -9,7 +9,6 @@
   <display-name>BPS</display-name>
   	<welcome-file-list>
   		<welcome-file>/WEB-INF/index.jsp</welcome-file>
-  		<welcome-file>/WEB-INF/login.jsp</welcome-file>
   	</welcome-file-list>
   	
   	<!-- Specify the spring context information location;

@@ -25,7 +25,7 @@ public class ProductRatePlanDAOImpl extends RWDAO {
 
 	@Override
 	public ProductRatePlanEntity getEntityById(int entityId) {
-		ProductRatePlanEntity entity = (ProductRatePlanEntity) sessionFactory.getCurrentSession()
+		ProductRatePlanEntity entity = (ProductRatePlanEntity) sessionFactory.openSession()
 				.load(ProductRatePlanEntity.class, entityId);
 		return entity;
 	}

@@ -6,7 +6,6 @@
 </head>
 <body>
 	<div style="padding: 10px">
-		<a href="list" target="content">Employee</a><br/>
 		<a href="listCustomer" target="content">Customer</a><br/>
 		<a href="listProduct" target="content">Product</a><br/>
 		<a href="listProductrateplan" target="content">ProductRatePlan</a><br/>
@@ -22,8 +21,8 @@
 		<a href="listInvoice"  target="content">Invoice</a>
 		<br/>
 		<br/>
-		<a href="view/editOrderList.jsp"  target="content">Payment</a>
-		<a href="view/editOrderList.jsp"  target="content">PaymentMethod</a>
+		<a href="view/editPaymentList.jsp"  target="content">Payment</a>
+		<a href="view/editPaymentList.jsp"  target="content">PaymentMethod</a>
 	</div>
 </body>
 </html>

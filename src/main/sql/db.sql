@@ -108,10 +108,3 @@ create table BILLRUN (
 	BILLRUNENDDATE varchar(20),
 	primary key(ID)
 ) engine=innodb default charset=utf8 auto_increment=1;
-
-create table LOGIN (
-	ID int unsigned not null auto_increment, 
-	USERNAME varchar(20), 
-	PASSWORD varchar(20),
-	primary key(ID)
-) engine=innodb default charset=utf8 auto_increment=1;

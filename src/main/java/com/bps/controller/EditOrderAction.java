@@ -1,13 +1,25 @@
 package com.bps.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 
 import com.bps.abstarct.AbstractEntity;
+import com.bps.abstarct.AbstractFactory;
 import com.bps.abstarct.AbstractManager;
+import com.bps.entity.ConcreteFactory;
 import com.bps.entity.OrderEntity;
+import com.bps.entity.OrderItemEntity;
+import com.bps.entity.OrderPlanEntity;
 import com.bps.entity.ProductEntity;
+import com.bps.entity.ProductItemEntity;
+import com.bps.entity.ProductRatePlanEntity;
+import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -27,6 +39,8 @@ public class EditOrderAction extends ActionSupport implements Preparable
 	//Order object to be added; Setter and Getter are below
 	private OrderEntity order;
 	private ProductEntity product;
+	private ProductRatePlanEntity productrateplan;
+	private String productId;
 	
 	//Order manager injected by spring context; This is cool !!
 	private AbstractManager customerManager;
@@ -35,6 +49,7 @@ public class EditOrderAction extends ActionSupport implements Preparable
 	private AbstractManager orderitemManager;
 	private AbstractManager productManager;
 	private AbstractManager productrateplanManager;
+	private AbstractManager productitemManager;
 
 	//This method return list of orders in database
 	public String listOrders() {
@@ -47,11 +62,52 @@ public class EditOrderAction extends ActionSupport implements Preparable
 		productrateplans = productrateplanManager.getAllEntity(((ProductEntity)products.get(0)).getId().toString());
 		return SUCCESS;
 	}
+	
+	public String getRatePlans() {
+		productrateplans = productrateplanManager.getAllEntity(productId);
+		
+		Gson gson = new Gson();
+		
+		HttpServletResponse response = ServletActionContext.getResponse();  
+        response.setContentType("text/html");  
+        response.setCharacterEncoding("UTF-8");  
+        
+        String json = gson.toJson(productrateplans);
+	    try {
+			PrintWriter pw = response.getWriter();
+			pw.write(json);
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+		return SUCCESS;
+	}
 
 	//This method will be called when a order object is added
-	public String addOrder() {
+	public String addOrder() throws Exception {
 		logger.info("addOrder method called");
+		logger.info("product=" + product.getId());
+		logger.info("productrateplan" + productrateplan.getId());
 		orderManager.addEntity(order);
+		
+		productrateplan = (ProductRatePlanEntity)productrateplanManager.getEntityById(productrateplan.getId());
+		// insert order plan
+		OrderPlanEntity orderplan = productrateplan.clone();
+		orderplan.setOrderid(order.getId().toString());
+		orderplanManager.addEntity(orderplan);
+		
+		// insert order item
+		List<AbstractEntity> productitems = productitemManager.getAllEntity(productrateplan.getId().toString());
+		
+		for(AbstractEntity productitem : productitems) {
+			ProductItemEntity pi = (ProductItemEntity) productitem;
+			OrderItemEntity oie = pi.clone();
+			oie.setOrderplanid(orderplan.getId().toString());
+			orderitemManager.addEntity(oie);
+		}
+		
 		return SUCCESS;
 	}
 
@@ -154,5 +210,33 @@ public class EditOrderAction extends ActionSupport implements Preparable
 	public void setProductrateplans(List<AbstractEntity> productrateplans) {
 		this.productrateplans = productrateplans;
 	}
-		
+	
+	// product item manager
+	public void setProductitemManager(AbstractManager productitemManager) {
+		this.productitemManager = productitemManager;
+	}
+	
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+	
+	public String getProductId() {
+		return productId;
+	}
+	
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+	
+	public ProductEntity getProduct() {
+		return product;
+	}
+	
+	public void setProductrateplan(ProductRatePlanEntity productrateplan) {
+		this.productrateplan = productrateplan;
+	}
+	
+	public ProductRatePlanEntity getProductrateplan() {
+		return productrateplan;
+	}
 }

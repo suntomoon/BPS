@@ -17,17 +17,20 @@ public class EditBillRunAction extends ActionSupport implements Preparable
 	//Logger configured using log4j
 	private static final Logger logger = Logger.getLogger(EditBillRunAction.class);
 	//List of billruns; Setter and Getter are below
+	private List<AbstractEntity> customers;
 	private List<AbstractEntity> billruns;
 	//BillRun object to be added; Setter and Getter are below
 	private BillRunEntity billrun;
 	
 	//BillRun manager injected by spring context; This is cool !!
+	private AbstractManager customerManager;
 	private AbstractManager billrunManager;
 
 	//This method return list of billruns in database
 	public String listBillruns() {
 		logger.info("listBillRuns method called");
 		billruns = billrunManager.getAllEntity();
+		customers = customerManager.getAllEntity();
 		return SUCCESS;
 	}
 
@@ -52,6 +55,20 @@ public class EditBillRunAction extends ActionSupport implements Preparable
 		billrun = null;
 	}
 
+	// customer
+	public void setCustomerManager(AbstractManager customerManager) {
+		this.customerManager = customerManager;
+	}
+
+	public List<AbstractEntity> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<AbstractEntity> customers) {
+		this.customers = customers;
+	}
+	
+	// bill run
 	public void setBillrunManager(AbstractManager billrunManager) {
 		this.billrunManager = billrunManager;
 	}

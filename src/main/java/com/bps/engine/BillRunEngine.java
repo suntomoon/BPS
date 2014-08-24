@@ -76,7 +76,7 @@ public class BillRunEngine {
 						invItem.setInvoiceid(invId);
 						
 						if(oie.getChargetype().equalsIgnoreCase("onetime")) {
-							if(oie.getBillrundate().trim().isEmpty()) {
+							if(oie.getBillrundate() == null || oie.getBillrundate().trim().isEmpty()) {
 								// build invItem
 								invItem.setAmount(oie.getAmount());
 								invItem.setStartdate(billRunEndDate);
@@ -89,7 +89,7 @@ public class BillRunEngine {
 							}
 						} else if(oie.getChargetype().equalsIgnoreCase("recurring")) {
 							int days = 0;
-							if(oie.getBillrundate().trim().isEmpty()) {
+							if(oie.getBillrundate() == null || oie.getBillrundate().trim().isEmpty()) {
 								days = Utils.getDays(currentBillRunDate, Utils.getDate(oe.getOrderstartdate()));
 								Double temp = (Double.valueOf(oie.getAmount())*days);
 								

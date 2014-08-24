@@ -15,15 +15,35 @@
 		padding: 5px;
 	}
 	</style>
+	<script type="text/javascript">
+		function setValue(){
+			var index = document.getElementById("customer").selectedIndex;
+			var option = document.getElementById("customer").options[index];
+			document.getElementById("customerid").value = option.value;
+		}
+	</script>
 </head>
 <body>
  
 <h2>BillRun Editor</h2>
  
-<s:form method="post" action="addBillrun">
+<s:form method="post" action="addBillrun" onsubmit="setValue()">
     <table>
 	    <tr>
-	        <td><s:textfield key="label.customerid" name="billrun.customerid"/></td> 
+    		<td>Customer: 
+			</td>
+			<td><c:if  test="${!empty customers}">
+		        	<select id="customer" style="width: 155px">
+	      				<c:forEach items="${customers}" var="cus">
+	  			    		<option value="${cus.id}">${cus.firstname} ${cus.lastname}</option>
+	    				</c:forEach>
+					</select>
+				</c:if></td> 
+    	</tr>
+	    <tr>
+	        <td>
+	        	<s:hidden id="customerid" value="1" name="billrun.customerid" />
+	        </td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="label.billrunenddate" name="billrun.billrunenddate"/></td>
