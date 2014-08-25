@@ -21,7 +21,14 @@
 			var option = document.getElementById("productrateplan").options[index];
 			document.getElementById("Rateplan ID").value=option.value;
 			document.getElementById("Rateplan Name").value=option.text;
-			return true;
+			
+			var index = document.getElementById("chargetype").selectedIndex;
+			var option = document.getElementById("chargetype").options[index];
+			document.getElementById("Charge Type").value=option.text;
+			
+			var index = document.getElementById("chargemodel").selectedIndex;
+			var option = document.getElementById("chargemodel").options[index];
+			document.getElementById("Charge Model").value=option.text;
 		}
 	</script>
 </head>
@@ -48,16 +55,31 @@
 	        <td>
 	        	<s:hidden id="Rateplan ID" value="1" name="productitem.planid" />
 	        	<s:hidden id="Rateplan Name" value="name" name="productitem.planname" />
+	        	<s:hidden id="Charge Type" value="name" name="productitem.itemchargetype" />
+	        	<s:hidden id="Charge Model" value="name" name="productitem.itemchargemodel" />
 	        </td> 
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Item Name" name="productitem.itemname"/></td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="Charge Type" name="productitem.itemchargetype"/></td> 
+	    	<td>Charge Type: 
+   		 	</td>
+	    	<td>
+		    	<select id="chargetype" style="width: 155px">
+	   				<option value="1">Recurring</option>
+	 				<option value="1">Onetime</option>
+				</select>
+	       	</td> 
 	    </tr>
 	    <tr>
-	        <td><s:textfield key="Charge Model" name="productitem.itemchargemodel"/></td> 
+	    	<td>Charge Model: 
+   		 	</td>
+	    	<td>
+		       <select id="chargemodel" style="width: 155px">
+	   				<option value="1">FlatFee</option>
+				</select>
+			</td>
 	    </tr>
 	    <tr>
 	        <td><s:textfield key="Amount" name="productitem.itemamount"/></td> 

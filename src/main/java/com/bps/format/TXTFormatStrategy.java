@@ -1,4 +1,4 @@
-package com.bps.service;
+package com.bps.format;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import com.bps.abstarct.AbstractEntity;
 import com.bps.abstarct.AbstractFormatStrategy;
 import com.bps.entity.InvoiceEntity;
 
-public class TextFormatStrategy implements AbstractFormatStrategy {
+public class TXTFormatStrategy implements AbstractFormatStrategy {
 
-	public TextFormatStrategy() {
+	public TXTFormatStrategy() {
 	}
 
 	@Override

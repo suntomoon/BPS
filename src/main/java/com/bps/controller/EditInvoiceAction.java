@@ -1,6 +1,5 @@
 package com.bps.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -11,12 +10,10 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bps.abstarct.AbstractEntity;
 import com.bps.abstarct.AbstractFormat;
+import com.bps.abstarct.AbstractFormatStrategy;
 import com.bps.abstarct.AbstractManager;
 import com.bps.entity.InvoiceEntity;
-import com.bps.service.CSVFormatStrategy;
-import com.bps.service.ConcreteFormat;
-import com.bps.service.PDFFormatStrategy;
-import com.bps.service.TextFormatStrategy;
+import com.bps.format.ConcreteFormat;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -55,21 +52,18 @@ public class EditInvoiceAction extends ActionSupport implements Preparable
 	public String downloadInvoice() {
 		invoices = invoiceManager.getAllEntity();
 		String filename="";
+		String[] formatmapping = {"TXT","CSV","PDF"};
 		HttpServletResponse response = ServletActionContext.getResponse();  
 		response.setContentType("application/octet-stream");
         response.setCharacterEncoding("UTF-8");
         
 	    try {
-	    	if(formattype.equals("1")) {
-	    		filename = "Invoice.txt";
-	    		formatter.setFormatStrategy(new TextFormatStrategy());
-	    	} else if(formattype.equals("2")) {
-	    		filename = "Invoice.csv";
-	    		formatter.setFormatStrategy(new CSVFormatStrategy());
-	    	} else if(formattype.equals("3")) {
-	    		filename = "Invoice.pdf";
-	    		formatter.setFormatStrategy(new PDFFormatStrategy());
-	    	}
+	    	int index = Integer.parseInt(formattype) - 1;
+	    	
+	    	filename = "Invoice." + formatmapping[index].toLowerCase();
+	    	
+	    	formatter.setFormatStrategy((AbstractFormatStrategy)Class.forName("com.bps.format." + 
+	    			formatmapping[index] + "FormatStrategy").newInstance());
 	    	
 	    	response.setHeader("Content-Disposition", "attachment;filename=" + filename);
 	    	
@@ -77,7 +71,7 @@ public class EditInvoiceAction extends ActionSupport implements Preparable
 			pw.print(formatter.format(invoices));
 			pw.flush();
 			pw.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
         
