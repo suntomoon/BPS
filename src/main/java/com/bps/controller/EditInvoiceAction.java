@@ -1,12 +1,22 @@
 package com.bps.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 
 import com.bps.abstarct.AbstractEntity;
+import com.bps.abstarct.AbstractFormat;
 import com.bps.abstarct.AbstractManager;
 import com.bps.entity.InvoiceEntity;
+import com.bps.service.CSVFormatStrategy;
+import com.bps.service.ConcreteFormat;
+import com.bps.service.PDFFormatStrategy;
+import com.bps.service.TextFormatStrategy;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -21,10 +31,12 @@ public class EditInvoiceAction extends ActionSupport implements Preparable
 	private List<AbstractEntity> invoiceitems;
 	//Invoice object to be added; Setter and Getter are below
 	private InvoiceEntity invoice;
+	private String formattype;
 	
 	//Invoice manager injected by spring context; This is cool !!
 	private AbstractManager invoiceManager;
 	private AbstractManager invoiceitemManager;
+	private AbstractFormat formatter;
 
 	//This method return list of invoices in database
 	public String listInvoices() {
@@ -40,11 +52,44 @@ public class EditInvoiceAction extends ActionSupport implements Preparable
 		return SUCCESS;
 	}
 	
+	public String downloadInvoice() {
+		invoices = invoiceManager.getAllEntity();
+		String filename="";
+		HttpServletResponse response = ServletActionContext.getResponse();  
+		response.setContentType("application/octet-stream");
+        response.setCharacterEncoding("UTF-8");
+        
+	    try {
+	    	if(formattype.equals("1")) {
+	    		filename = "Invoice.txt";
+	    		formatter.setFormatStrategy(new TextFormatStrategy());
+	    	} else if(formattype.equals("2")) {
+	    		filename = "Invoice.csv";
+	    		formatter.setFormatStrategy(new CSVFormatStrategy());
+	    	} else if(formattype.equals("3")) {
+	    		filename = "Invoice.pdf";
+	    		formatter.setFormatStrategy(new PDFFormatStrategy());
+	    	}
+	    	
+	    	response.setHeader("Content-Disposition", "attachment;filename=" + filename);
+	    	
+			PrintWriter pw = response.getWriter();
+			pw.print(formatter.format(invoices));
+			pw.flush();
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+		return SUCCESS;
+	}
+	
 	//This method will be called before any of Action method is invoked;
 	//So some pre-processing if required.
 	@Override
 	public void prepare() throws Exception {
 		invoice = null;
+		formatter = new ConcreteFormat();
 	}
 
 	public void setInvoiceManager(AbstractManager invoiceManager) {
@@ -77,5 +122,13 @@ public class EditInvoiceAction extends ActionSupport implements Preparable
 
 	public void setInvoice(InvoiceEntity invoice) {
 		this.invoice = invoice;
+	}
+	
+	public String getFormattype() {
+		return formattype;
+	}
+	
+	public void setFormattype(String formattype) {
+		this.formattype = formattype;
 	}
 }

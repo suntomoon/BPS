@@ -120,6 +120,8 @@ public class BillRunEngine {
 				}
 			}
 			
+			invoice.setCustomerid(Integer.parseInt(entity.getCustomerid().trim()));
+			invoice.setCustomername(entity.getCustomername());
 			invoice.setInvoicedate(Utils.getString(new Date()));
 			invoice.setAmount(totalAmount.toString());
 			invoice.setBalance(totalAmount.toString());

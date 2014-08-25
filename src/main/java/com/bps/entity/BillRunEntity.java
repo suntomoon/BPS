@@ -18,6 +18,9 @@ public class BillRunEntity extends AbstractEntity {
      
     @Column(name="CUSTOMERID")
     private String customerid;
+    
+    @Column(name="CUSTOMERNAME")
+    private String customername;
    
     @Column(name="BILLRUNENDDATE")
     private String billrunenddate;
@@ -28,6 +31,14 @@ public class BillRunEntity extends AbstractEntity {
    
     public void setCustomerid(String customerid) {
         this.customerid = customerid;
+    }
+    
+    public String getCustomername() {
+        return customername;
+    }
+   
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
     
     public String getBillrunenddate() {

@@ -16,5 +16,8 @@
 		    <param name="invoice.id">{1}</param>
 			<result>/view/editInvoiceitemList.jsp</result>
 		</action>
+		<action name="downloadInvoice" class="editInvoiceAction" method="downloadInvoice">
+			<result></result>
+		</action>
 	</package>
 </struts>

@@ -84,10 +84,13 @@ ON UPDATE CASCADE
 create table INVOICE (
 	ID int unsigned not null auto_increment, 
 	INVOICEID varchar(20), 
-	INVOICEDATE varchar(20), 
+	INVOICEDATE varchar(20),
+	CUSTOMERID int unsigned, 
+	CUSTOMERNAME varchar(20),
 	AMOUNT varchar(20),
 	BALANCE varchar(20),
-	primary key(ID)
+	primary key(ID),
+	CONSTRAINT `INV_FK_1` FOREIGN KEY (`CUSTOMERID`) REFERENCES `CUSTOMER` (`ID`) on delete cascade on update cascade
 ) engine=innodb default charset=utf8 auto_increment=1;
 
 create table INVOICEITEM (
@@ -104,7 +107,8 @@ create table INVOICEITEM (
 
 create table BILLRUN (
 	ID int unsigned not null auto_increment, 
-	CUSTOMERID varchar(20), 
+	CUSTOMERID varchar(20),
+	CUSTOMERNAME varchar(20),
 	BILLRUNENDDATE varchar(20),
 	primary key(ID)
 ) engine=innodb default charset=utf8 auto_increment=1;

@@ -15,7 +15,13 @@ public class InvoiceEntity extends AbstractEntity {
     @Column(name="ID")
     @GeneratedValue
     private Integer id;
-     
+    
+	@Column(name="CUSTOMERID")
+    private Integer customerid;
+   
+    @Column(name="CUSTOMERNAME")
+    private String customername;
+    
     @Column(name="INVOICEID")
     private String invoiceid;
    
@@ -65,5 +71,20 @@ public class InvoiceEntity extends AbstractEntity {
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+    public Integer getCustomerid() {
+        return customerid;
+    }
+    public void setCustomerid(Integer customerid) {
+        this.customerid = customerid;
+    }
+    
+    public String getCustomername() {
+        return customername;
+    }
+   
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
 }

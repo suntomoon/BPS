@@ -21,6 +21,8 @@
 <c:if  test="${!empty invoices}">
 	<table class="list">
 		<tr>
+			<th align="left">CustomerID</th>
+		    <th align="left">CustomerName</th>
 		    <th align="left">InvoiceID</th>
 		    <th align="left">InvoiceDate</th>
 		    <th align="left">Amount</th>
@@ -29,14 +31,23 @@
 		</tr>
 		<c:forEach items="${invoices}" var="inv">
 		    <tr>
+		    	<td>${inv.customerid} </td>
+		        <td>${inv.customername}</td>
 		        <td>${inv.invoiceid} </td>
 		        <td>${inv.invoicedate}</td>
 		        <td>${inv.amount}</td>
 		        <td>${inv.balance}</td>
-		        <td><a href="listInvoiceitem/${inv.id}">view</a>|<a href="listPayment">makePayment</a></td>
+		        <td><a href="listInvoiceitem/${inv.id}">view</a>|<a href="view/editPaymentList.jsp">makePayment</a></td>
 		    </tr>
 		</c:forEach>
 	</table>
-</c:if> 
+</c:if>
+<br/>
+<br/>
+<s:form method="post" action="downloadInvoice">
+	<s:radio label="Invoice Format" name="formattype" list="#{'1':'TXT','2':'CSV','3':'PDF'}" value="1" />
+	<br/>
+	<s:submit key="Download"></s:submit>
+</s:form>
 </body>
 </html>

@@ -20,6 +20,7 @@
 			var index = document.getElementById("customer").selectedIndex;
 			var option = document.getElementById("customer").options[index];
 			document.getElementById("customerid").value = option.value;
+			document.getElementById("customername").value = option.text;
 		}
 	</script>
 </head>
@@ -43,6 +44,7 @@
 	    <tr>
 	        <td>
 	        	<s:hidden id="customerid" value="1" name="billrun.customerid" />
+	        	<s:hidden id="customername" value="1" name="billrun.customername" />
 	        </td> 
 	    </tr>
 	    <tr>
