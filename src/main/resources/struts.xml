@@ -24,8 +24,9 @@
 	    	 1) class is set to 'editEmployeeAction' which is bean defined by Spring context
 	    	 2) We have given the method to be called here as well;
 	   	-->
+	   	<default-action-ref name="list"></default-action-ref>
 		<action name="list" class="editEmployeeAction" method="listEmployees">
-			<result>/view/editEmployeeList.jsp</result>
+			<result>/index.jsp</result>
 		</action>
 		<action name="view/add" class="editEmployeeAction" method="addEmployee">
 			<result type="redirect">/list</result>
